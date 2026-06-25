@@ -68,7 +68,7 @@ function About() {
           <Reveal delay={0.1}>
             <div className="relative">
               <div className="rounded-3xl border border-border bg-background p-2 shadow-soft">
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#06101f] via-[#102A43] to-[#06101f] p-10 text-white">
+                <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-[#06101f] via-[#102A43] to-[#06101f] p-10 text-white">
                   <div className="absolute inset-0 dot-bg opacity-50" />
                   <div className="relative">
                     <Trophy className="h-8 w-8 text-accent" />

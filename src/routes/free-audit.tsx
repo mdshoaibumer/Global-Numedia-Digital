@@ -166,7 +166,7 @@ function FreeAuditPage() {
             >
               Get your free
               <br />
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">
+              <span className="bg-linear-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">
                 website & marketing audit.
               </span>
             </motion.h1>
@@ -212,7 +212,7 @@ function FreeAuditPage() {
                     />
                     <button
                       type="submit"
-                      className="rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
+                      className="rounded-xl bg-linear-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
                     >
                       Analyze Free
                     </button>
@@ -250,7 +250,7 @@ function FreeAuditPage() {
                         <button
                           type="submit"
                           disabled={loading}
-                          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white disabled:opacity-70"
+                          className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white disabled:opacity-70"
                         >
                           {loading ? (
                             <>
@@ -361,7 +361,7 @@ function FreeAuditPage() {
                   </div>
 
                   {/* CTA */}
-                  <div className="mt-14 rounded-3xl border border-accent/20 bg-gradient-to-r from-violet-500/5 to-indigo-500/5 p-8 text-center md:p-12">
+                  <div className="mt-14 rounded-3xl border border-accent/20 bg-linear-to-r from-violet-500/5 to-indigo-500/5 p-8 text-center md:p-12">
                     <h3 className="font-display text-2xl text-foreground md:text-3xl">
                       Want us to fix these issues?
                     </h3>
@@ -373,7 +373,7 @@ function FreeAuditPage() {
                     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                       <a
                         href="/contact"
-                        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)]"
+                        className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-violet-500 to-indigo-500 px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)]"
                       >
                         Book Free Strategy Call
                         <ArrowUpRight className="h-4 w-4" />

@@ -32,8 +32,8 @@ export function TrustedBy() {
 
       {/* Dual-row infinite marquee */}
       <div className="relative mt-8">
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-surface to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-surface to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-linear-to-r from-surface to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-linear-to-l from-surface to-transparent" />
 
         <Marquee speed={45} pauseOnHover direction="left">
           {logos.map((l) => (

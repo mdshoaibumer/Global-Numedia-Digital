@@ -22,14 +22,14 @@ export function Marquee({
     >
       <div
         className={`flex shrink-0 items-center gap-8 ${
-          pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""
+          pauseOnHover ? "group-hover:paused" : ""
         } ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
       >
         {children}
       </div>
       <div
         className={`flex shrink-0 items-center gap-8 ${
-          pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""
+          pauseOnHover ? "group-hover:paused" : ""
         } ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
         aria-hidden="true"
       >
@@ -59,8 +59,8 @@ export function LogoMarquee() {
   return (
     <div className="relative overflow-hidden py-8">
       {/* Gradient masks */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-background to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-background to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-linear-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-linear-to-l from-background to-transparent" />
 
       <Marquee speed={40} pauseOnHover>
         {clientLogos.map((logo) => (

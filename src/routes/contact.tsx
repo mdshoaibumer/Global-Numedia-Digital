@@ -166,7 +166,7 @@ function Contact() {
                     {[1, 2, 3, 4].map((i) => (
                       <div
                         key={i}
-                        className="h-8 w-8 rounded-full bg-gradient-to-br from-violet-400 to-indigo-500 ring-2 ring-background"
+                        className="h-8 w-8 rounded-full bg-linear-to-br from-violet-400 to-indigo-500 ring-2 ring-background"
                       />
                     ))}
                   </div>

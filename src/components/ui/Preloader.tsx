@@ -24,7 +24,7 @@ export function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[99999] flex items-center justify-center bg-background"
+          className="fixed inset-0 z-99999 flex items-center justify-center bg-background"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -43,7 +43,7 @@ export function Preloader() {
             </motion.div>
             <div className="relative h-0.5 w-48 overflow-hidden rounded-full bg-foreground/10">
               <motion.div
-                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-amber-400 to-orange-500"
+                className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-amber-400 to-orange-500"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

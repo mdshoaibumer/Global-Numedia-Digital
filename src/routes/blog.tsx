@@ -188,7 +188,7 @@ function Blog() {
             >
               <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
                 <div
-                  className={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${featured.gradient} lg:h-full lg:min-h-[280px]`}
+                  className={`relative h-56 overflow-hidden rounded-2xl bg-linear-to-br ${featured.gradient} lg:h-full lg:min-h-70`}
                 >
                   <div className="absolute inset-0 dot-bg opacity-40" />
                   <div className="absolute bottom-5 left-5 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
@@ -242,7 +242,7 @@ function Blog() {
                 to="/blog"
                 className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:border-accent/15 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)]"
               >
-                <div className={`h-32 bg-gradient-to-br ${p.gradient}`}>
+                <div className={`h-32 bg-linear-to-br ${p.gradient}`}>
                   <div className="h-full w-full dot-bg opacity-30" />
                 </div>
                 <div className="flex flex-1 flex-col p-7">

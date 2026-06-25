@@ -128,7 +128,7 @@ export function Pricing() {
               <motion.div
                 className={`relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-500 ${
                   plan.popular
-                    ? "border-accent/30 bg-gradient-to-b from-accent/5 to-background shadow-[0_20px_60px_-15px_rgba(120,119,198,0.15)]"
+                    ? "border-accent/30 bg-linear-to-b from-accent/5 to-background shadow-[0_20px_60px_-15px_rgba(120,119,198,0.15)]"
                     : "border-border bg-background hover:border-accent/15 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)]"
                 }`}
                 whileHover={{ y: -4 }}
@@ -136,7 +136,7 @@ export function Pricing() {
               >
                 {/* Popular badge */}
                 {plan.popular && (
-                  <div className="absolute -right-8 top-6 rotate-45 bg-gradient-to-r from-violet-500 to-indigo-500 px-10 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
+                  <div className="absolute -right-8 top-6 rotate-45 bg-linear-to-r from-violet-500 to-indigo-500 px-10 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
                     Most Popular
                   </div>
                 )}
@@ -149,7 +149,7 @@ export function Pricing() {
 
                 {/* Background gradient */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-50`}
+                  className={`absolute inset-0 bg-linear-to-br ${plan.gradient} opacity-50`}
                 />
 
                 <div className="relative">
@@ -190,7 +190,7 @@ export function Pricing() {
                     to="/contact"
                     className={`mt-8 flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold transition-all duration-300 ${
                       plan.popular
-                        ? "bg-gradient-to-r from-violet-500 to-indigo-500 text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
+                        ? "bg-linear-to-r from-violet-500 to-indigo-500 text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
                         : "border border-border bg-surface text-foreground hover:border-accent/30 hover:bg-accent/5"
                     }`}
                   >

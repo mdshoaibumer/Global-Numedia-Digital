@@ -19,7 +19,7 @@ export function PageHero({
     <section className="relative overflow-hidden pb-20 pt-36 md:pb-28 md:pt-44">
       <div className="absolute inset-0 grid-bg" />
       <div
-        className="pointer-events-none absolute -top-32 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
+        className="pointer-events-none absolute -top-32 left-1/2 h-130 w-205 -translate-x-1/2 rounded-full opacity-30 blur-3xl"
         style={{ background: "radial-gradient(circle, #3b82f6 0%, transparent 65%)" }}
       />
       <div className="container-pro relative">
@@ -48,14 +48,14 @@ export function PageHero({
 export function CTAStrip() {
   return (
     <section className="container-pro py-20 md:py-28">
-      <div className="relative overflow-hidden rounded-[32px] bg-[#06101f] px-6 py-16 text-white md:px-16 md:py-24">
+      <div className="relative overflow-hidden rounded-4xl bg-[#06101f] px-6 py-16 text-white md:px-16 md:py-24">
         <div className="absolute inset-0 dot-bg opacity-50" />
         <div
-          className="pointer-events-none absolute -right-32 -top-32 h-[400px] w-[400px] rounded-full opacity-40 blur-3xl"
+          className="pointer-events-none absolute -right-32 -top-32 h-100 w-100 rounded-full opacity-40 blur-3xl"
           style={{ background: "radial-gradient(circle, #3b82f6, transparent 70%)" }}
         />
         <div
-          className="pointer-events-none absolute -bottom-40 -left-20 h-[400px] w-[400px] rounded-full opacity-30 blur-3xl"
+          className="pointer-events-none absolute -bottom-40 -left-20 h-100 w-100 rounded-full opacity-30 blur-3xl"
           style={{ background: "radial-gradient(circle, #10b981, transparent 70%)" }}
         />
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">

@@ -47,7 +47,7 @@ export function ExitIntentPopup() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleDismiss}
-            className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-200 bg-black/60 backdrop-blur-sm"
           />
 
           {/* Modal */}
@@ -56,7 +56,7 @@ export function ExitIntentPopup() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-1/2 z-[201] w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2"
+            className="fixed left-1/2 top-1/2 z-201 w-[90%] max-w-lg -translate-x-1/2 -translate-y-1/2"
           >
             <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] md:p-10">
               {/* Background decoration */}
@@ -74,7 +74,7 @@ export function ExitIntentPopup() {
 
               <div className="relative">
                 {/* Icon */}
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-500 text-white shadow-lg">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-violet-500 to-indigo-500 text-white shadow-lg">
                   <Gift className="h-6 w-6" />
                 </div>
 
@@ -112,7 +112,7 @@ export function ExitIntentPopup() {
                   />
                   <button
                     type="submit"
-                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
+                    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
                   >
                     Get Free Audit
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />

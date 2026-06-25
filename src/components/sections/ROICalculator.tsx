@@ -161,7 +161,7 @@ export function ROICalculator() {
               </div>
               <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-border">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-500"
+                  className="h-full rounded-full bg-linear-to-r from-violet-500 to-indigo-500"
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 />
@@ -348,7 +348,7 @@ export function ROICalculator() {
               <button
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)] disabled:opacity-40 disabled:shadow-none"
+                className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-violet-500 to-indigo-500 px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)] disabled:opacity-40 disabled:shadow-none"
               >
                 {step === totalSteps - 1 ? "See My Results" : "Continue"}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -392,9 +392,9 @@ function ResultsPanel({
   return (
     <div className="overflow-hidden rounded-3xl border border-accent/20 bg-background shadow-[0_30px_80px_-20px_rgba(120,119,198,0.15)]">
       {/* Header */}
-      <div className="border-b border-border bg-gradient-to-r from-violet-500/10 to-indigo-500/5 p-8">
+      <div className="border-b border-border bg-linear-to-r from-violet-500/10 to-indigo-500/5 p-8">
         <div className="flex items-center gap-3">
-          <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 text-white">
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-violet-500 to-indigo-500 text-white">
             <Sparkles className="h-5 w-5" />
           </div>
           <div>
@@ -449,7 +449,7 @@ function ResultsPanel({
         </p>
         <a
           href="/contact"
-          className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
+          className="mt-4 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-violet-500 to-indigo-500 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all duration-300 hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]"
         >
           Book Free Strategy Call
           <ArrowRight className="h-4 w-4" />

@@ -71,7 +71,7 @@ export function SocialProofToast() {
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, x: -80, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-6 left-6 z-[90] hidden md:block"
+          className="fixed bottom-6 left-6 z-90 hidden md:block"
         >
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-background/95 p-4 pr-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] backdrop-blur-xl">
             <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/10">
