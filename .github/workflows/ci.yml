@@ -18,7 +18,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: TypeScript type check
         run: npm run typecheck
@@ -38,7 +38,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: Production build
         run: npm run build
@@ -62,7 +62,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
