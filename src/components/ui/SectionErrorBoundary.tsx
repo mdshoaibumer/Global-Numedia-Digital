@@ -22,10 +22,12 @@ export class SectionErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback ?? (
-        <div className="flex items-center justify-center py-16 text-sm text-muted-foreground">
-          This section couldn't load. Please refresh the page.
-        </div>
+      return (
+        this.props.fallback ?? (
+          <div className="flex items-center justify-center py-16 text-sm text-muted-foreground">
+            This section couldn't load. Please refresh the page.
+          </div>
+        )
       );
     }
     return this.props.children;

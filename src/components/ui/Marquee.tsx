@@ -78,16 +78,19 @@ export function LogoMarquee() {
       {/* Second row going opposite direction */}
       <div className="mt-4">
         <Marquee speed={35} direction="right" pauseOnHover>
-          {clientLogos.slice().reverse().map((logo) => (
-            <div
-              key={logo.name + "-rev"}
-              className="flex h-12 items-center justify-center rounded-xl border border-border/50 bg-surface/50 px-6 py-3 backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:bg-surface"
-            >
-              <span className="whitespace-nowrap text-sm font-semibold text-muted-foreground/70 transition-colors duration-300 hover:text-foreground">
-                {logo.name}
-              </span>
-            </div>
-          ))}
+          {clientLogos
+            .slice()
+            .reverse()
+            .map((logo) => (
+              <div
+                key={logo.name + "-rev"}
+                className="flex h-12 items-center justify-center rounded-xl border border-border/50 bg-surface/50 px-6 py-3 backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:bg-surface"
+              >
+                <span className="whitespace-nowrap text-sm font-semibold text-muted-foreground/70 transition-colors duration-300 hover:text-foreground">
+                  {logo.name}
+                </span>
+              </div>
+            ))}
         </Marquee>
       </div>
     </div>

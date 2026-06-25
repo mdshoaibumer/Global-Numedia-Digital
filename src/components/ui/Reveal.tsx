@@ -1,15 +1,46 @@
-import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
-type RevealVariant = "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale" | "blur" | "slide-up";
+type RevealVariant =
+  | "fade-up"
+  | "fade-down"
+  | "fade-left"
+  | "fade-right"
+  | "scale"
+  | "blur"
+  | "slide-up";
 
 const variants = {
-  "fade-up": { hidden: { opacity: 0, y: 40, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)" } },
-  "fade-down": { hidden: { opacity: 0, y: -40, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)" } },
-  "fade-left": { hidden: { opacity: 0, x: -50, filter: "blur(4px)" }, visible: { opacity: 1, x: 0, filter: "blur(0px)" } },
-  "fade-right": { hidden: { opacity: 0, x: 50, filter: "blur(4px)" }, visible: { opacity: 1, x: 0, filter: "blur(0px)" } },
-  "scale": { hidden: { opacity: 0, scale: 0.92, filter: "blur(8px)" }, visible: { opacity: 1, scale: 1, filter: "blur(0px)" } },
-  "blur": { hidden: { opacity: 0, filter: "blur(12px)" }, visible: { opacity: 1, filter: "blur(0px)" } },
+  "fade-up": {
+    hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+  },
+  "fade-down": {
+    hidden: { opacity: 0, y: -40, filter: "blur(4px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+  },
+  "fade-left": {
+    hidden: { opacity: 0, x: -50, filter: "blur(4px)" },
+    visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+  },
+  "fade-right": {
+    hidden: { opacity: 0, x: 50, filter: "blur(4px)" },
+    visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+  },
+  scale: {
+    hidden: { opacity: 0, scale: 0.92, filter: "blur(8px)" },
+    visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
+  },
+  blur: {
+    hidden: { opacity: 0, filter: "blur(12px)" },
+    visible: { opacity: 1, filter: "blur(0px)" },
+  },
   "slide-up": { hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } },
 };
 
@@ -43,7 +74,9 @@ export function Reveal({
       <motion.div
         ref={ref}
         initial={reducedMotionVariants.hidden}
-        animate={inView ? reducedMotionVariants.visible : reducedMotionVariants.hidden}
+        animate={
+          inView ? reducedMotionVariants.visible : reducedMotionVariants.hidden
+        }
         transition={{ duration: 0.3, delay }}
         className={className}
       >
@@ -55,7 +88,11 @@ export function Reveal({
   return (
     <motion.div
       ref={ref}
-      initial={variant === "fade-up" ? { opacity: 0, y, filter: "blur(4px)" } : v.hidden}
+      initial={
+        variant === "fade-up"
+          ? { opacity: 0, y, filter: "blur(4px)" }
+          : v.hidden
+      }
       animate={inView ? v.visible : v.hidden}
       transition={{
         type: "spring",
@@ -85,7 +122,11 @@ export function ParallaxReveal({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [offset, -offset]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? [0, 0] : [offset, -offset],
+  );
 
   return (
     <motion.div ref={ref} style={{ y }} className={className}>
@@ -133,7 +174,12 @@ export function StaggerItem({
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
-        visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { type: "spring", bounce: 0.15, duration: 0.7 } },
+        visible: {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          transition: { type: "spring", bounce: 0.15, duration: 0.7 },
+        },
       }}
       className={className}
     >

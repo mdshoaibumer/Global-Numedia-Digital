@@ -12,7 +12,8 @@ export const COMPANY = {
   email: "hello@globalnumedia.digital",
   phone: "+91 80888 09090",
   phoneRaw: "+918088809090",
-  whatsapp: "https://wa.me/918088809090?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20growth%20strategy%20for%20my%20business.",
+  whatsapp:
+    "https://wa.me/918088809090?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20growth%20strategy%20for%20my%20business.",
   calendly: "https://calendly.com/globalnumedia/strategy-call",
   locations: "Bengaluru · Mumbai · Dubai · Singapore",
   foundedYear: FOUNDED_YEAR,

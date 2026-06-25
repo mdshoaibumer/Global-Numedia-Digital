@@ -111,7 +111,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           property: "og:image:alt",
-          content: "Global Numedia — Digital Marketing & Growth Agency | ₹680 Cr+ Revenue Generated",
+          content:
+            "Global Numedia — Digital Marketing & Growth Agency | ₹680 Cr+ Revenue Generated",
         },
         {
           property: "og:image:width",

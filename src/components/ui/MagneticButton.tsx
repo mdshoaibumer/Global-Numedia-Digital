@@ -1,4 +1,10 @@
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { useRef, type ReactNode, type MouseEvent } from "react";
 
 export function MagneticButton({
@@ -61,8 +67,16 @@ export function TextReveal({
       {words.map((word, i) => (
         <motion.span
           key={i}
-          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20, filter: "blur(8px)" }}
-          animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={
+            prefersReducedMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 20, filter: "blur(8px)" }
+          }
+          animate={
+            prefersReducedMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0, filter: "blur(0px)" }
+          }
           transition={{
             duration: prefersReducedMotion ? 0.2 : 0.6,
             delay: prefersReducedMotion ? 0 : delay + i * 0.06,
@@ -100,10 +114,14 @@ export function GlowOrb({
         x,
         y,
       }}
-      animate={prefersReducedMotion ? undefined : {
-        x: [0, 30, -20, 10, 0],
-        y: [0, -20, 15, -10, 0],
-      }}
+      animate={
+        prefersReducedMotion
+          ? undefined
+          : {
+              x: [0, 30, -20, 10, 0],
+              y: [0, -20, 15, -10, 0],
+            }
+      }
       transition={{
         duration: 20,
         repeat: Infinity,
@@ -130,9 +148,13 @@ export function FloatingElement({
 
   return (
     <motion.div
-      animate={prefersReducedMotion ? undefined : {
-        y: [-distance, distance, -distance],
-      }}
+      animate={
+        prefersReducedMotion
+          ? undefined
+          : {
+              y: [-distance, distance, -distance],
+            }
+      }
       transition={{
         duration,
         repeat: Infinity,

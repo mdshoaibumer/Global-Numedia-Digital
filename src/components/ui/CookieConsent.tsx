@@ -33,7 +33,11 @@ export function CookieConsent() {
           transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
           className="fixed bottom-4 left-4 right-4 z-9999 mx-auto max-w-lg rounded-2xl border border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl md:left-6 md:right-auto"
         >
-          <button onClick={decline} className="absolute right-3 top-3 rounded-full p-1 text-muted-foreground transition hover:text-foreground" aria-label="Close">
+          <button
+            onClick={decline}
+            className="absolute right-3 top-3 rounded-full p-1 text-muted-foreground transition hover:text-foreground"
+            aria-label="Close"
+          >
             <X className="h-4 w-4" />
           </button>
           <div className="flex items-start gap-3">
@@ -41,15 +45,25 @@ export function CookieConsent() {
               <Cookie className="h-4 w-4 text-foreground" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-foreground">We value your privacy</p>
+              <p className="text-sm font-medium text-foreground">
+                We value your privacy
+              </p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                We use cookies to enhance your browsing experience, serve personalized ads, and analyze traffic. By clicking "Accept", you consent to our use of cookies.
+                We use cookies to enhance your browsing experience, serve
+                personalized ads, and analyze traffic. By clicking "Accept", you
+                consent to our use of cookies.
               </p>
               <div className="mt-3 flex items-center gap-2">
-                <button onClick={accept} className="rounded-full bg-foreground px-4 py-1.5 text-xs font-medium text-background transition hover:opacity-90">
+                <button
+                  onClick={accept}
+                  className="rounded-full bg-foreground px-4 py-1.5 text-xs font-medium text-background transition hover:opacity-90"
+                >
                   Accept all
                 </button>
-                <button onClick={decline} className="rounded-full border border-border px-4 py-1.5 text-xs font-medium text-foreground transition hover:bg-surface">
+                <button
+                  onClick={decline}
+                  className="rounded-full border border-border px-4 py-1.5 text-xs font-medium text-foreground transition hover:bg-surface"
+                >
                   Decline
                 </button>
               </div>

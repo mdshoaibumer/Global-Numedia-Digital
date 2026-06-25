@@ -3,14 +3,54 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, X } from "lucide-react";
 
 const notifications = [
-  { name: "Priya S.", city: "Mumbai", action: "booked a free growth audit", time: "2 min ago" },
-  { name: "Daniel O.", city: "Bengaluru", action: "started a strategy call", time: "5 min ago" },
-  { name: "Rahul M.", city: "Dubai", action: "downloaded the SEO checklist", time: "8 min ago" },
-  { name: "Sneha K.", city: "Pune", action: "booked a free growth audit", time: "12 min ago" },
-  { name: "Amit P.", city: "Delhi NCR", action: "signed up for AI search audit", time: "15 min ago" },
-  { name: "Lena P.", city: "Singapore", action: "requested a proposal", time: "18 min ago" },
-  { name: "Vikram R.", city: "Hyderabad", action: "booked a free growth audit", time: "22 min ago" },
-  { name: "Neha T.", city: "Mumbai", action: "started a strategy call", time: "25 min ago" },
+  {
+    name: "Priya S.",
+    city: "Mumbai",
+    action: "booked a free growth audit",
+    time: "2 min ago",
+  },
+  {
+    name: "Daniel O.",
+    city: "Bengaluru",
+    action: "started a strategy call",
+    time: "5 min ago",
+  },
+  {
+    name: "Rahul M.",
+    city: "Dubai",
+    action: "downloaded the SEO checklist",
+    time: "8 min ago",
+  },
+  {
+    name: "Sneha K.",
+    city: "Pune",
+    action: "booked a free growth audit",
+    time: "12 min ago",
+  },
+  {
+    name: "Amit P.",
+    city: "Delhi NCR",
+    action: "signed up for AI search audit",
+    time: "15 min ago",
+  },
+  {
+    name: "Lena P.",
+    city: "Singapore",
+    action: "requested a proposal",
+    time: "18 min ago",
+  },
+  {
+    name: "Vikram R.",
+    city: "Hyderabad",
+    action: "booked a free growth audit",
+    time: "22 min ago",
+  },
+  {
+    name: "Neha T.",
+    city: "Mumbai",
+    action: "started a strategy call",
+    time: "25 min ago",
+  },
 ];
 
 export function SocialProofToast() {
@@ -79,7 +119,8 @@ export function SocialProofToast() {
             </div>
             <div>
               <p className="text-sm font-medium text-foreground">
-                <span className="font-semibold">{notification.name}</span> from {notification.city}
+                <span className="font-semibold">{notification.name}</span> from{" "}
+                {notification.city}
               </p>
               <p className="text-xs text-muted-foreground">
                 {notification.action} · {notification.time}

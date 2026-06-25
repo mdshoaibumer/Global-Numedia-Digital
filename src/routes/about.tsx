@@ -1,5 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Compass, Heart, Sparkles, Users, ShieldCheck, Trophy } from "lucide-react";
+import {
+  ArrowUpRight,
+  Compass,
+  Heart,
+  Sparkles,
+  Users,
+  ShieldCheck,
+  Trophy,
+} from "lucide-react";
 import { PageHero, CTAStrip } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
@@ -8,9 +16,16 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Global Numedia" },
-      { name: "description", content: "We're a senior growth team obsessed with one thing: turning marketing into measurable revenue for ambitious businesses." },
+      {
+        name: "description",
+        content:
+          "We're a senior growth team obsessed with one thing: turning marketing into measurable revenue for ambitious businesses.",
+      },
       { property: "og:title", content: "About — Global Numedia" },
-      { property: "og:description", content: "A senior growth team behind 180+ ambitious brands." },
+      {
+        property: "og:description",
+        content: "A senior growth team behind 180+ ambitious brands.",
+      },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
@@ -19,10 +34,26 @@ export const Route = createFileRoute("/about")({
 });
 
 const values = [
-  { icon: Compass, title: "Outcome over output", desc: "We're hired to move a number, not to fill a content calendar." },
-  { icon: Heart, title: "Senior or nothing", desc: "Every account is led by a strategist with 8+ years of experience." },
-  { icon: Sparkles, title: "Craft as a competitive edge", desc: "Better creative, better systems, better numbers — every time." },
-  { icon: ShieldCheck, title: "Radical transparency", desc: "Live dashboards, weekly stand-ups, no surprises in the report." },
+  {
+    icon: Compass,
+    title: "Outcome over output",
+    desc: "We're hired to move a number, not to fill a content calendar.",
+  },
+  {
+    icon: Heart,
+    title: "Senior or nothing",
+    desc: "Every account is led by a strategist with 8+ years of experience.",
+  },
+  {
+    icon: Sparkles,
+    title: "Craft as a competitive edge",
+    desc: "Better creative, better systems, better numbers — every time.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Radical transparency",
+    desc: "Live dashboards, weekly stand-ups, no surprises in the report.",
+  },
 ];
 
 function About() {
@@ -30,7 +61,12 @@ function About() {
     <>
       <PageHero
         eyebrow="About Global Numedia"
-        title={<>A senior team behind <span className="italic gradient-text">ambitious</span> brands.</>}
+        title={
+          <>
+            A senior team behind{" "}
+            <span className="italic gradient-text">ambitious</span> brands.
+          </>
+        }
         description="We're a remote-first growth agency built by operators, designers and strategists who got tired of agencies optimizing for the wrong things."
       />
 
@@ -56,12 +92,28 @@ function About() {
         <div className="container-pro grid gap-16 lg:grid-cols-2">
           <Reveal>
             <div>
-              <div className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Our story</div>
-              <h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">Built by operators, for operators.</h2>
+              <div className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                Our story
+              </div>
+              <h2 className="mt-3 font-display text-4xl leading-tight md:text-5xl">
+                Built by operators, for operators.
+              </h2>
               <div className="mt-6 space-y-5 text-[15px] leading-relaxed text-ink-soft md:text-base">
-                <p>Global Numedia started in 2017 inside a portfolio company. The team had a simple thesis: marketing should be measured in revenue, not in deliverables.</p>
-                <p>Seven years later, we've helped 180+ companies grow — from venture-backed startups to multi-location service brands — and generated more than $47M in attributed pipeline.</p>
-                <p>We stay small on purpose. Every engagement is led by a senior strategist, supported by a tight pod of specialists. No junior account managers. No deliverable theatre.</p>
+                <p>
+                  Global Numedia started in 2017 inside a portfolio company. The
+                  team had a simple thesis: marketing should be measured in
+                  revenue, not in deliverables.
+                </p>
+                <p>
+                  Seven years later, we've helped 180+ companies grow — from
+                  venture-backed startups to multi-location service brands — and
+                  generated more than $47M in attributed pipeline.
+                </p>
+                <p>
+                  We stay small on purpose. Every engagement is led by a senior
+                  strategist, supported by a tight pod of specialists. No junior
+                  account managers. No deliverable theatre.
+                </p>
               </div>
             </div>
           </Reveal>
@@ -72,8 +124,12 @@ function About() {
                   <div className="absolute inset-0 dot-bg opacity-50" />
                   <div className="relative">
                     <Trophy className="h-8 w-8 text-accent" />
-                    <div className="mt-8 font-display text-3xl md:text-4xl">"The best agency partnership we've ever had."</div>
-                    <div className="mt-6 text-sm text-white/60">— 4.9 average rating across 180+ engagements</div>
+                    <div className="mt-8 font-display text-3xl md:text-4xl">
+                      "The best agency partnership we've ever had."
+                    </div>
+                    <div className="mt-6 text-sm text-white/60">
+                      — 4.9 average rating across 180+ engagements
+                    </div>
                   </div>
                 </div>
               </div>
@@ -84,8 +140,12 @@ function About() {
 
       <section className="container-pro py-24">
         <Reveal>
-          <div className="text-xs font-medium uppercase tracking-[0.18em] text-accent">Values</div>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl leading-tight md:text-5xl">What we hold ourselves to.</h2>
+          <div className="text-xs font-medium uppercase tracking-[0.18em] text-accent">
+            Values
+          </div>
+          <h2 className="mt-3 max-w-3xl font-display text-4xl leading-tight md:text-5xl">
+            What we hold ourselves to.
+          </h2>
         </Reveal>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {values.map((v, i) => (
