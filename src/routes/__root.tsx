@@ -18,6 +18,9 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ExitIntentPopup } from "@/components/ui/ExitIntentPopup";
 import { SocialProofToast } from "@/components/ui/SocialProofToast";
+import { CookieConsent } from "@/components/ui/CookieConsent";
+import { BackToTop } from "@/components/ui/BackToTop";
+import { Preloader } from "@/components/ui/Preloader";
 
 function NotFoundComponent() {
   return (
@@ -184,6 +187,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SmoothScrollProvider>
+        <Preloader />
         <CustomCursor />
         <ScrollProgress />
         <ExitIntentPopup />
@@ -205,6 +209,8 @@ function RootComponent() {
         </div>
         <SiteFooter />
         <FloatingContact />
+        <BackToTop />
+        <CookieConsent />
       </SmoothScrollProvider>
     </QueryClientProvider>
   );

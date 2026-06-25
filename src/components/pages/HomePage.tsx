@@ -19,6 +19,8 @@ import {
   ROICalculator,
   Pricing,
 } from "@/components/sections";
+import { CertificationBadges } from "@/components/sections/CertificationBadges";
+import { MediaMentions } from "@/components/sections/MediaMentions";
 import { SectionErrorBoundary } from "@/components/ui/SectionErrorBoundary";
 
 export default function HomePage() {
@@ -32,6 +34,9 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <TrustedBy />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary>
+        <MediaMentions />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <Story />
@@ -68,6 +73,9 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <Testimonials />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary>
+        <CertificationBadges />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <Pricing />
