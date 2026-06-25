@@ -215,6 +215,14 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 2rem)); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(calc(-100% - 2rem)); }
+  to { transform: translateX(0); }
+}
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -257,6 +265,8 @@
 @utility animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
 @utility animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 @utility animate-marquee { animation: marquee 35s linear infinite; }
+@utility animate-marquee-left { animation: marquee-left var(--duration, 30s) linear infinite; }
+@utility animate-marquee-right { animation: marquee-right var(--duration, 30s) linear infinite; }
 @utility animate-shimmer { animation: shimmer 3s ease-in-out infinite; background-size: 200% 100%; }
 @utility animate-aurora { animation: aurora 20s ease-in-out infinite; }
 @utility animate-gradient-shift { animation: gradient-shift 6s ease infinite; background-size: 200% 200%; }

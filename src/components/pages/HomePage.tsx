@@ -16,6 +16,8 @@ import {
   FAQ,
   ContactCTA,
   MobileFixedCTA,
+  ROICalculator,
+  Pricing,
 } from "@/components/sections";
 import { SectionErrorBoundary } from "@/components/ui/SectionErrorBoundary";
 
@@ -44,6 +46,9 @@ export default function HomePage() {
         <Results />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
+        <ROICalculator />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary>
         <Industries />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
@@ -63,6 +68,9 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <Testimonials />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary>
+        <Pricing />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <FAQ />

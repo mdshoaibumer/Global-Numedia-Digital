@@ -1,5 +1,5 @@
 import {
-  Search, Target, Megaphone, Globe, Zap, Workflow,
+  Search, Target, Megaphone, Globe, Zap, Workflow, Brain,
   Stethoscope, Home as HomeIcon, ShoppingBag, GraduationCap,
   Hotel, Building2, UtensilsCrossed, MapPin, ShieldCheck,
   Compass, Eye, Heart,
@@ -16,6 +16,7 @@ import client3 from "@/assets/client-3.jpg";
 export { founderImg, client1, client2, client3 };
 
 export const services = [
+  { icon: Brain, title: "AI Search & AEO", desc: "Get cited in ChatGPT, Perplexity, Gemini and Google AI Overviews — where your buyers actually search in 2026.", deliverables: ["LLM citation building", "Generative Engine Optimization", "AI visibility tracking"], to: "/services/ai-search", gradient: "from-cyan-500/20 to-blue-500/10" },
   { icon: Search, title: "SEO & Content", desc: "Rank for the keywords that actually drive pipeline. We combine technical excellence with editorial strategy.", deliverables: ["Technical audit & architecture", "Topic clusters & content velocity", "Authority link acquisition"], to: "/services/seo", gradient: "from-violet-500/20 to-indigo-500/10" },
   { icon: Target, title: "Google Ads", desc: "Profitable Search, Shopping & Performance Max at scale with ruthless efficiency.", deliverables: ["Account restructure & cleanup", "Smart bid strategy engineering", "Weekly performance QBRs"], to: "/services/google-ads", gradient: "from-amber-500/20 to-orange-500/10" },
   { icon: Megaphone, title: "Meta & LinkedIn Ads", desc: "Creative-led paid social engineered for CAC discipline and scale.", deliverables: ["Creative testing frameworks", "Full-funnel mapping", "Lookalike audience modeling"], to: "/services/social-media", gradient: "from-purple-500/20 to-pink-500/10" },

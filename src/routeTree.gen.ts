@@ -23,6 +23,7 @@ import { Route as ServicesSocialMediaRouteImport } from './routes/services.socia
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
 import { Route as ServicesGoogleAdsRouteImport } from './routes/services.google-ads'
 import { Route as ServicesBrandingRouteImport } from './routes/services.branding'
+import { Route as ServicesAiSearchRouteImport } from './routes/services.ai-search'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -94,6 +95,11 @@ const ServicesBrandingRoute = ServicesBrandingRouteImport.update({
   path: '/branding',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesAiSearchRoute = ServicesAiSearchRouteImport.update({
+  id: '/ai-search',
+  path: '/ai-search',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
+  '/services/ai-search': typeof ServicesAiSearchRoute
   '/services/branding': typeof ServicesBrandingRoute
   '/services/google-ads': typeof ServicesGoogleAdsRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
+  '/services/ai-search': typeof ServicesAiSearchRoute
   '/services/branding': typeof ServicesBrandingRoute
   '/services/google-ads': typeof ServicesGoogleAdsRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
+  '/services/ai-search': typeof ServicesAiSearchRoute
   '/services/branding': typeof ServicesBrandingRoute
   '/services/google-ads': typeof ServicesGoogleAdsRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/industries'
     | '/services'
+    | '/services/ai-search'
     | '/services/branding'
     | '/services/google-ads'
     | '/services/seo'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/industries'
+    | '/services/ai-search'
     | '/services/branding'
     | '/services/google-ads'
     | '/services/seo'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/industries'
     | '/services'
+    | '/services/ai-search'
     | '/services/branding'
     | '/services/google-ads'
     | '/services/seo'
@@ -304,10 +316,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBrandingRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/ai-search': {
+      id: '/services/ai-search'
+      path: '/ai-search'
+      fullPath: '/services/ai-search'
+      preLoaderRoute: typeof ServicesAiSearchRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
 interface ServicesRouteChildren {
+  ServicesAiSearchRoute: typeof ServicesAiSearchRoute
   ServicesBrandingRoute: typeof ServicesBrandingRoute
   ServicesGoogleAdsRoute: typeof ServicesGoogleAdsRoute
   ServicesSeoRoute: typeof ServicesSeoRoute
@@ -317,6 +337,7 @@ interface ServicesRouteChildren {
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAiSearchRoute: ServicesAiSearchRoute,
   ServicesBrandingRoute: ServicesBrandingRoute,
   ServicesGoogleAdsRoute: ServicesGoogleAdsRoute,
   ServicesSeoRoute: ServicesSeoRoute,

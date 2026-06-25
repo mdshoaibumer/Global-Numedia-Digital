@@ -1,6 +1,11 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { Marquee } from "@/components/ui/Marquee";
 
-const logos = ["NORTHWAY", "VERITAS", "ATRIUM", "HELIO", "MAISON", "ORBIT", "LUMEN", "FORGE", "AXIOM", "PARALLEL"];
+const logos = [
+  "NORTHWAY", "VERITAS", "ATRIUM", "HELIO", "MAISON",
+  "ORBIT", "LUMEN", "FORGE", "AXIOM", "PARALLEL",
+  "CLOUDSCALE", "FRESHBITES", "TECHVISTA", "MEDIFIRST",
+];
 
 export function TrustedBy() {
   return (
@@ -12,11 +17,38 @@ export function TrustedBy() {
           </p>
         </Reveal>
       </div>
-      <div className="relative mt-8 mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee gap-20">
-          {[...logos, ...logos, ...logos].map((l, i) => (
-            <div key={i} className="font-display text-3xl tracking-[0.15em] text-foreground/10 transition-colors duration-500 hover:text-foreground/40">{l}</div>
+
+      {/* Dual-row infinite marquee */}
+      <div className="relative mt-8">
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-surface to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-surface to-transparent" />
+
+        <Marquee speed={45} pauseOnHover direction="left">
+          {logos.map((l) => (
+            <div
+              key={l}
+              className="flex h-14 items-center justify-center rounded-xl border border-border/40 bg-background/50 px-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:bg-background"
+            >
+              <span className="whitespace-nowrap font-display text-lg tracking-[0.15em] text-foreground/20 transition-colors duration-300 hover:text-foreground/60">
+                {l}
+              </span>
+            </div>
           ))}
+        </Marquee>
+
+        <div className="mt-3">
+          <Marquee speed={38} pauseOnHover direction="right">
+            {logos.slice().reverse().map((l) => (
+              <div
+                key={l + "-r"}
+                className="flex h-14 items-center justify-center rounded-xl border border-border/40 bg-background/50 px-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/20 hover:bg-background"
+              >
+                <span className="whitespace-nowrap font-display text-lg tracking-[0.15em] text-foreground/20 transition-colors duration-300 hover:text-foreground/60">
+                  {l}
+                </span>
+              </div>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>

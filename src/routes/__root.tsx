@@ -13,6 +13,10 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingContact } from "@/components/layout/FloatingContact";
+import { SmoothScrollProvider } from "@/components/ui/SmoothScroll";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ExitIntentPopup } from "@/components/ui/ExitIntentPopup";
 
 function NotFoundComponent() {
   return (
@@ -131,23 +135,28 @@ function RootComponent() {
   const router = useRouter();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
-        <SiteHeader />
-        <AnimatePresence mode="wait">
-          <motion.main
-            key={router.state.location.pathname}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ type: "spring", bounce: 0, duration: 0.35 }}
-            className="flex-1"
-          >
-            <Outlet />
-          </motion.main>
-        </AnimatePresence>
-      </div>
-      <SiteFooter />
-      <FloatingContact />
+      <SmoothScrollProvider>
+        <CustomCursor />
+        <ScrollProgress />
+        <ExitIntentPopup />
+        <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
+          <SiteHeader />
+          <AnimatePresence mode="wait">
+            <motion.main
+              key={router.state.location.pathname}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+              className="flex-1"
+            >
+              <Outlet />
+            </motion.main>
+          </AnimatePresence>
+        </div>
+        <SiteFooter />
+        <FloatingContact />
+      </SmoothScrollProvider>
     </QueryClientProvider>
   );
 }

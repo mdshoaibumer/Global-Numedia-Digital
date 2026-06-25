@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -61,6 +62,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               to="/contact"
               className="hidden items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#030712] transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] sm:inline-flex"

@@ -14,3 +14,5 @@ export { Timeline } from "./Timeline";
 export { Testimonials } from "./Testimonials";
 export { FAQ } from "./FAQ";
 export { ContactCTA, MobileFixedCTA } from "./ContactCTA";
+export { ROICalculator } from "./ROICalculator";
+export { Pricing } from "./Pricing";
