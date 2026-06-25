@@ -1,5 +1,14 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /_build/
 
+# Sitemaps
 Sitemap: https://globalnumedia.digital/sitemap.xml
+
+# Crawl-delay for polite bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

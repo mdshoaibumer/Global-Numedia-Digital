@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, Gift } from "lucide-react";
+import { trackEvent } from "@/lib/utils";
 
 export function ExitIntentPopup() {
   const [show, setShow] = useState(false);
@@ -15,13 +16,14 @@ export function ExitIntentPopup() {
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0 && !dismissed) {
         setShow(true);
+        trackEvent("exit_intent_shown");
       }
     };
 
-    // Delay listener to avoid triggering immediately
+    // Delay listener — give user time to consume value before prompting
     const timeout = setTimeout(() => {
       document.addEventListener("mouseleave", handleMouseLeave);
-    }, 5000);
+    }, 20000);
 
     return () => {
       clearTimeout(timeout);
@@ -78,24 +80,32 @@ export function ExitIntentPopup() {
 
                 {/* Content */}
                 <h3 className="mt-5 font-display text-[clamp(1.5rem,4vw,2rem)] leading-tight text-foreground">
-                  Wait — grab your free<br />
-                  <span className="italic text-accent">marketing audit</span> first.
+                  Wait — grab your free
+                  <br />
+                  <span className="italic text-accent">
+                    marketing audit
+                  </span>{" "}
+                  first.
                 </h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                  We'll send you a candid 7-page audit of your current marketing — what's working,
-                  what's broken, and where the biggest revenue is hiding. Free, no obligation.
+                  We'll send you a candid 7-page audit of your current marketing
+                  — what's working, what's broken, and where the biggest revenue
+                  is hiding. Free, no obligation.
                 </p>
 
                 {/* Form */}
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    const email = new FormData(e.currentTarget).get("email");
+                    trackEvent("exit_intent_submit", { email });
                     handleDismiss();
                   }}
                   className="mt-6 flex flex-col gap-3 sm:flex-row"
                 >
                   <input
                     type="email"
+                    name="email"
                     placeholder="Your work email"
                     required
                     className="flex-1 rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"

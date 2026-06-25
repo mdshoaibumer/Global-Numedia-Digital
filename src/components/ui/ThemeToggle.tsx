@@ -9,7 +9,10 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
-    const systemPrefers = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const systemPrefers = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
     const initial = stored || systemPrefers;
     setTheme(initial);
     document.documentElement.classList.toggle("dark", initial === "dark");
@@ -25,7 +28,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
+      className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/50 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-muted dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:border-white/20 dark:hover:bg-white/10 dark:hover:text-white"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       <motion.div

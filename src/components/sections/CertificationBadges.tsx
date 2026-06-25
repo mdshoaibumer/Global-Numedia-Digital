@@ -23,12 +23,18 @@ export function CertificationBadges() {
           {badges.map((b) => (
             <div
               key={b.label}
-              className="flex items-center gap-2.5 rounded-xl border border-border bg-background/80 px-4 py-2.5 backdrop-blur-sm transition hover:border-foreground/10 hover:shadow-sm"
+              className="flex items-center gap-2.5 rounded-xl border border-border bg-background/80 px-5 py-3 backdrop-blur-sm transition hover:border-foreground/10 hover:shadow-sm"
             >
-              <b.icon className="h-4 w-4 text-accent shrink-0" />
+              <b.icon className="h-5 w-5 text-accent shrink-0" />
               <div>
-                <span className="text-sm font-medium text-foreground">{b.label}</span>
-                {b.year && <span className="ml-1.5 text-[10px] font-medium text-muted-foreground">{b.year}</span>}
+                <span className="text-sm font-medium text-foreground">
+                  {b.label}
+                </span>
+                {b.year && (
+                  <span className="ml-1.5 text-[10px] font-medium text-muted-foreground">
+                    {b.year}
+                  </span>
+                )}
               </div>
             </div>
           ))}

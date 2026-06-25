@@ -1,8 +1,13 @@
 import { Reveal } from "@/components/ui/Reveal";
 
 const publications = [
-  "Forbes", "Entrepreneur", "YourStory", "Inc42",
-  "Business Standard", "Economic Times", "Mint",
+  "Forbes",
+  "Entrepreneur",
+  "YourStory",
+  "Inc42",
+  "Business Standard",
+  "Economic Times",
+  "Mint",
 ];
 
 export function MediaMentions() {
@@ -18,7 +23,7 @@ export function MediaMentions() {
           {publications.map((pub) => (
             <span
               key={pub}
-              className="font-display text-xl tracking-tight text-foreground/15 transition-colors duration-300 hover:text-foreground/50 select-none"
+              className="font-display text-xl tracking-tight text-foreground/35 transition-colors duration-300 hover:text-foreground/70 select-none"
             >
               {pub}
             </span>

@@ -18,7 +18,6 @@ export default defineConfig({
           if (id.includes("node_modules/framer-motion")) return "vendor-motion";
           if (id.includes("node_modules/@tanstack")) return "vendor-router";
           if (id.includes("node_modules/lenis")) return "vendor-scroll";
-          if (id.includes("node_modules/gsap")) return "vendor-gsap";
         },
       },
     },

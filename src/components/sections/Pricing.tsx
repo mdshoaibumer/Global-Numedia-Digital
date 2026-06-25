@@ -57,6 +57,7 @@ const plans = [
     cta: "Talk to Leadership",
     popular: false,
     gradient: "from-amber-500/10 to-orange-500/5",
+    badge: "Premium",
   },
 ];
 
@@ -64,7 +65,10 @@ export function Pricing() {
   const [annual, setAnnual] = useState(true);
 
   return (
-    <section id="pricing" className="relative overflow-hidden border-t border-border bg-background py-24 md:py-32 lg:py-40">
+    <section
+      id="pricing"
+      className="relative overflow-hidden border-t border-border bg-background py-24 md:py-32 lg:py-40"
+    >
       <div className="container-pro">
         <Reveal>
           <div className="text-center">
@@ -76,7 +80,8 @@ export function Pricing() {
               <span className="italic text-accent">no surprises.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[15px] text-muted-foreground">
-              Every plan includes live dashboards, dedicated strategists, and a money-back guarantee on month one.
+              Every plan includes live dashboards, dedicated strategists, and a
+              money-back guarantee on month one.
             </p>
           </div>
         </Reveal>
@@ -84,11 +89,17 @@ export function Pricing() {
         {/* Toggle */}
         <Reveal delay={0.1}>
           <div className="mt-10 flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium transition-colors ${!annual ? "text-foreground" : "text-muted-foreground"}`}>Monthly</span>
+            <span
+              className={`text-sm font-medium transition-colors ${!annual ? "text-foreground" : "text-muted-foreground"}`}
+            >
+              Monthly
+            </span>
             <button
               onClick={() => setAnnual(!annual)}
+              role="switch"
+              aria-checked={annual}
               className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors duration-300 ${annual ? "bg-accent" : "bg-border"}`}
-              aria-label="Toggle billing period"
+              aria-label="Toggle annual billing"
             >
               <motion.span
                 className="h-5 w-5 rounded-full bg-white shadow-md"
@@ -96,7 +107,9 @@ export function Pricing() {
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             </button>
-            <span className={`text-sm font-medium transition-colors ${annual ? "text-foreground" : "text-muted-foreground"}`}>
+            <span
+              className={`text-sm font-medium transition-colors ${annual ? "text-foreground" : "text-muted-foreground"}`}
+            >
               Annual
               <span className="ml-1.5 inline-flex items-center rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
                 Save 15%
@@ -106,7 +119,10 @@ export function Pricing() {
         </Reveal>
 
         {/* Plans */}
-        <StaggerContainer className="mt-14 grid gap-6 lg:grid-cols-3" staggerDelay={0.1}>
+        <StaggerContainer
+          className="mt-14 grid gap-6 lg:grid-cols-3"
+          staggerDelay={0.1}
+        >
           {plans.map((plan) => (
             <StaggerItem key={plan.name}>
               <motion.div
@@ -124,13 +140,25 @@ export function Pricing() {
                     Most Popular
                   </div>
                 )}
+                {/* Enterprise badge */}
+                {"badge" in plan && !plan.popular && (
+                  <div className="absolute right-4 top-4 rounded-full bg-brand-warm/15 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-warm">
+                    {(plan as { badge: string }).badge}
+                  </div>
+                )}
 
                 {/* Background gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-50`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-50`}
+                />
 
                 <div className="relative">
-                  <h3 className="font-display text-2xl text-foreground">{plan.name}</h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{plan.desc}</p>
+                  <h3 className="font-display text-2xl text-foreground">
+                    {plan.name}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+                    {plan.desc}
+                  </p>
 
                   {/* Price */}
                   <div className="mt-6 flex items-baseline gap-1">
@@ -138,14 +166,19 @@ export function Pricing() {
                       {annual ? plan.price.annual : plan.price.monthly}
                     </span>
                     {plan.price.monthly !== "Custom" && (
-                      <span className="text-sm text-muted-foreground">/month</span>
+                      <span className="text-sm text-muted-foreground">
+                        /month
+                      </span>
                     )}
                   </div>
 
                   {/* Features */}
                   <ul className="mt-8 space-y-3 border-t border-border pt-8">
                     {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-[14px] text-foreground/80">
+                      <li
+                        key={f}
+                        className="flex items-start gap-3 text-[14px] text-foreground/80"
+                      >
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                         {f}
                       </li>
@@ -173,7 +206,8 @@ export function Pricing() {
         {/* Bottom note */}
         <Reveal delay={0.3}>
           <p className="mt-12 text-center text-sm text-muted-foreground">
-            All plans include: NDA protection · 30-day money-back guarantee · No long-term lock-in · Cancel anytime
+            All plans include: NDA protection · 30-day money-back guarantee · No
+            long-term lock-in · Cancel anytime
           </p>
         </Reveal>
       </div>

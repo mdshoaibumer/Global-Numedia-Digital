@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Calculator, Sparkles, TrendingUp, Target, DollarSign } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Calculator,
+  Sparkles,
+  TrendingUp,
+  Target,
+  DollarSign,
+} from "lucide-react";
 import { Counter } from "@/components/ui/Counter";
+import { trackEvent } from "@/lib/utils";
 
 const industries = [
-  "Healthcare", "Real Estate", "E-commerce / D2C", "Edtech",
-  "Hospitality", "B2B SaaS", "F&B / Restaurant", "Finance",
-  "Legal", "Other",
+  "Healthcare",
+  "Real Estate",
+  "E-commerce / D2C",
+  "Edtech",
+  "Hospitality",
+  "B2B SaaS",
+  "F&B / Restaurant",
+  "Finance",
+  "Legal",
+  "Other",
 ];
 
 const budgetRanges = [
@@ -50,16 +66,41 @@ export function ROICalculator() {
   const totalSteps = 4;
   const progress = ((step + 1) / totalSteps) * 100;
 
-  // Calculate projected results based on inputs
-  const projectedLeads = Math.round((formData.budget / 100000) * 45 * (1 + Math.random() * 0.3));
-  const projectedROAS = (3.2 + Math.random() * 2.8).toFixed(1);
-  const projectedRevenue = Math.round(formData.budget * parseFloat(projectedROAS));
-  const projectedCPL = Math.round(formData.budget / projectedLeads);
+  // Calculate projected results based on inputs — memoized to avoid recalc with new random on every render
+  const projections = useMemo(() => {
+    if (!formData.budget || !formData.industry)
+      return { leads: 0, roas: 0, revenue: 0, cpl: 0 };
+    // Deterministic "random" based on industry string to keep results stable
+    const seed = formData.industry.charCodeAt(0) * 7 + formData.budget;
+    const variance = (seed % 30) / 100; // 0–0.30 deterministic variance
+    const leads = Math.round((formData.budget / 100000) * 45 * (1 + variance));
+    const roas = parseFloat((3.2 + variance * 9).toFixed(1));
+    const revenue = Math.round(formData.budget * roas);
+    const cpl = leads > 0 ? Math.round(formData.budget / leads) : 0;
+    return { leads, roas, revenue, cpl };
+  }, [formData.budget, formData.industry]);
 
   const handleNext = () => {
     if (step < totalSteps - 1) {
+      trackEvent("roi_calculator_step", {
+        step: step + 1,
+        stepName: ["industry", "budget", "goal", "contact"][step],
+        value:
+          step === 0
+            ? formData.industry
+            : step === 1
+              ? formData.budget
+              : step === 2
+                ? formData.goal
+                : formData.email,
+      });
       setStep(step + 1);
     } else {
+      trackEvent("roi_calculator_complete", {
+        industry: formData.industry,
+        budget: formData.budget,
+        goal: formData.goal,
+      });
       setShowResults(true);
     }
   };
@@ -74,16 +115,24 @@ export function ROICalculator() {
 
   const canProceed = () => {
     switch (step) {
-      case 0: return formData.industry !== "";
-      case 1: return formData.budget > 0;
-      case 2: return formData.goal !== "";
-      case 3: return formData.email !== "" && formData.name !== "";
-      default: return false;
+      case 0:
+        return formData.industry !== "";
+      case 1:
+        return formData.budget > 0;
+      case 2:
+        return formData.goal !== "";
+      case 3:
+        return formData.email !== "" && formData.name !== "";
+      default:
+        return false;
     }
   };
 
   return (
-    <section id="roi-calculator" className="relative overflow-hidden border-t border-border bg-surface py-24 md:py-32 lg:py-40">
+    <section
+      id="roi-calculator"
+      className="relative overflow-hidden border-t border-border bg-surface py-24 md:py-32 lg:py-40"
+    >
       <div className="container-pro">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
@@ -96,15 +145,18 @@ export function ROICalculator() {
               <span className="italic text-accent">growth.</span>
             </h2>
             <p className="mt-3 text-[15px] text-muted-foreground">
-              Answer 4 quick questions and get a personalized growth projection based on our data from 240+ campaigns.
+              Answer 4 quick questions and get a personalized growth projection
+              based on our data from 240+ campaigns.
             </p>
           </div>
 
           {/* Progress bar */}
           {!showResults && (
-            <div className="mt-10">
+            <div className="mt-10" aria-live="polite" aria-atomic="true">
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>Step {step + 1} of {totalSteps}</span>
+                <span>
+                  Step {step + 1} of {totalSteps}
+                </span>
                 <span>{Math.round(progress)}% complete</span>
               </div>
               <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-border">
@@ -129,10 +181,10 @@ export function ROICalculator() {
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <ResultsPanel
-                    leads={projectedLeads}
-                    roas={parseFloat(projectedROAS)}
-                    revenue={projectedRevenue}
-                    cpl={projectedCPL}
+                    leads={projections.leads}
+                    roas={projections.roas}
+                    revenue={projections.revenue}
+                    cpl={projections.cpl}
                     budget={formData.budget}
                   />
                 </motion.div>
@@ -150,7 +202,9 @@ export function ROICalculator() {
                         {industries.map((ind) => (
                           <button
                             key={ind}
-                            onClick={() => setFormData({ ...formData, industry: ind })}
+                            onClick={() =>
+                              setFormData({ ...formData, industry: ind })
+                            }
                             className={`rounded-2xl border p-4 text-left text-sm font-medium transition-all duration-200 ${
                               formData.industry === ind
                                 ? "border-accent bg-accent/10 text-accent shadow-[0_0_20px_-4px_rgba(120,119,198,0.2)]"
@@ -170,15 +224,21 @@ export function ROICalculator() {
                         {budgetRanges.map((b) => (
                           <button
                             key={b.label}
-                            onClick={() => setFormData({ ...formData, budget: b.value })}
+                            onClick={() =>
+                              setFormData({ ...formData, budget: b.value })
+                            }
                             className={`flex items-center justify-between rounded-2xl border p-5 text-left transition-all duration-200 ${
                               formData.budget === b.value
                                 ? "border-accent bg-accent/10 shadow-[0_0_20px_-4px_rgba(120,119,198,0.2)]"
                                 : "border-border bg-background hover:border-accent/30"
                             }`}
                           >
-                            <span className="text-sm font-semibold text-foreground">{b.label}</span>
-                            <DollarSign className={`h-4 w-4 ${formData.budget === b.value ? "text-accent" : "text-muted-foreground"}`} />
+                            <span className="text-sm font-semibold text-foreground">
+                              {b.label}
+                            </span>
+                            <DollarSign
+                              className={`h-4 w-4 ${formData.budget === b.value ? "text-accent" : "text-muted-foreground"}`}
+                            />
                           </button>
                         ))}
                       </div>
@@ -191,14 +251,18 @@ export function ROICalculator() {
                         {goals.map((g) => (
                           <button
                             key={g}
-                            onClick={() => setFormData({ ...formData, goal: g })}
+                            onClick={() =>
+                              setFormData({ ...formData, goal: g })
+                            }
                             className={`flex items-center gap-3 rounded-2xl border p-4 text-left text-sm font-medium transition-all duration-200 ${
                               formData.goal === g
                                 ? "border-accent bg-accent/10 text-accent shadow-[0_0_20px_-4px_rgba(120,119,198,0.2)]"
                                 : "border-border bg-background text-foreground hover:border-accent/30"
                             }`}
                           >
-                            <Target className={`h-4 w-4 shrink-0 ${formData.goal === g ? "text-accent" : "text-muted-foreground"}`} />
+                            <Target
+                              className={`h-4 w-4 shrink-0 ${formData.goal === g ? "text-accent" : "text-muted-foreground"}`}
+                            />
                             {g}
                           </button>
                         ))}
@@ -209,27 +273,60 @@ export function ROICalculator() {
                   {step === 3 && (
                     <StepCard title="Where should we send your growth plan?">
                       <div className="space-y-4">
-                        <input
-                          type="text"
-                          placeholder="Your name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                        />
-                        <input
-                          type="email"
-                          placeholder="Work email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                        />
-                        <input
-                          type="tel"
-                          placeholder="Phone (optional)"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                        />
+                        <div>
+                          <label htmlFor="roi-name" className="sr-only">
+                            Your name
+                          </label>
+                          <input
+                            id="roi-name"
+                            type="text"
+                            placeholder="Your name"
+                            autoComplete="name"
+                            value={formData.name}
+                            onChange={(e) =>
+                              setFormData({ ...formData, name: e.target.value })
+                            }
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="roi-email" className="sr-only">
+                            Work email
+                          </label>
+                          <input
+                            id="roi-email"
+                            type="email"
+                            placeholder="Work email"
+                            autoComplete="email"
+                            value={formData.email}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                email: e.target.value,
+                              })
+                            }
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="roi-phone" className="sr-only">
+                            Phone (optional)
+                          </label>
+                          <input
+                            id="roi-phone"
+                            type="tel"
+                            placeholder="Phone (optional)"
+                            autoComplete="tel"
+                            value={formData.phone}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                phone: e.target.value,
+                              })
+                            }
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+                          />
+                        </div>
                       </div>
                     </StepCard>
                   )}
@@ -264,7 +361,13 @@ export function ROICalculator() {
   );
 }
 
-function StepCard({ title, children }: { title: string; children: React.ReactNode }) {
+function StepCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="rounded-3xl border border-border bg-background p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)]">
       <h3 className="mb-6 font-display text-xl text-foreground">{title}</h3>
@@ -273,7 +376,19 @@ function StepCard({ title, children }: { title: string; children: React.ReactNod
   );
 }
 
-function ResultsPanel({ leads, roas, revenue, cpl, budget }: { leads: number; roas: number; revenue: number; cpl: number; budget: number }) {
+function ResultsPanel({
+  leads,
+  roas,
+  revenue,
+  cpl,
+  budget,
+}: {
+  leads: number;
+  roas: number;
+  revenue: number;
+  cpl: number;
+  budget: number;
+}) {
   return (
     <div className="overflow-hidden rounded-3xl border border-accent/20 bg-background shadow-[0_30px_80px_-20px_rgba(120,119,198,0.15)]">
       {/* Header */}
@@ -283,8 +398,12 @@ function ResultsPanel({ leads, roas, revenue, cpl, budget }: { leads: number; ro
             <Sparkles className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="font-display text-xl text-foreground">Your Growth Projection</h3>
-            <p className="text-xs text-muted-foreground">Based on data from 240+ similar campaigns</p>
+            <h3 className="font-display text-xl text-foreground">
+              Your Growth Projection
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Based on data from 240+ similar campaigns
+            </p>
           </div>
         </div>
       </div>
@@ -341,8 +460,22 @@ function ResultsPanel({ leads, roas, revenue, cpl, budget }: { leads: number; ro
 }
 
 function ResultMetric({
-  label, value, prefix, suffix, decimals, icon, delay,
-}: { label: string; value: number; prefix?: string; suffix?: string; decimals?: number; icon: React.ReactNode; delay: number }) {
+  label,
+  value,
+  prefix,
+  suffix,
+  decimals,
+  icon,
+  delay,
+}: {
+  label: string;
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  icon: React.ReactNode;
+  delay: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -355,7 +488,12 @@ function ResultMetric({
         {label}
       </div>
       <div className="mt-3 font-display text-[clamp(2rem,4vw,3rem)] tracking-tight text-foreground">
-        <Counter to={value} prefix={prefix} suffix={suffix} decimals={decimals ?? 0} />
+        <Counter
+          to={value}
+          prefix={prefix}
+          suffix={suffix}
+          decimals={decimals ?? 0}
+        />
       </div>
     </motion.div>
   );

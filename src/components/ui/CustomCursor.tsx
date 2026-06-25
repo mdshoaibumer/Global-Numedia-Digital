@@ -3,7 +3,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [hoverText, setHoverText] = useState("");
 
@@ -19,7 +18,7 @@ export function CustomCursor() {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     },
-    [cursorX, cursorY]
+    [cursorX, cursorY],
   );
 
   useEffect(() => {
@@ -27,14 +26,10 @@ export function CustomCursor() {
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const handleMouseMove = (e: MouseEvent) => moveCursor(e);
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
     const handleMouseLeave = () => setIsHidden(true);
     const handleMouseEnter = () => setIsHidden(false);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.documentElement.addEventListener("mouseleave", handleMouseLeave);
     document.documentElement.addEventListener("mouseenter", handleMouseEnter);
 
@@ -47,7 +42,7 @@ export function CustomCursor() {
 
     function setupHoverListeners() {
       const interactiveElements = document.querySelectorAll(
-        'a, button, [role="button"], input, textarea, select, [data-cursor="pointer"], [data-cursor-text]'
+        'a, button, [role="button"], [data-cursor="pointer"], [data-cursor-text]',
       );
       interactiveElements.forEach((el) => {
         el.addEventListener("mouseenter", handleElementEnter);
@@ -69,58 +64,61 @@ export function CustomCursor() {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
-      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
-      document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
+      document.documentElement.removeEventListener(
+        "mouseleave",
+        handleMouseLeave,
+      );
+      document.documentElement.removeEventListener(
+        "mouseenter",
+        handleMouseEnter,
+      );
       observer.disconnect();
     };
   }, [moveCursor]);
 
   // Don't render on touch devices
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(pointer: coarse)").matches
+  ) {
     return null;
   }
 
   return (
-    <>
-      {/* Main cursor dot */}
+    <motion.div
+      className="pointer-events-none fixed left-0 top-0 z-[9999]"
+      style={{
+        x: cursorXSpring,
+        y: cursorYSpring,
+      }}
+    >
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
+        className="relative flex items-center justify-center rounded-full border border-brand-warm/40"
+        animate={{
+          width: isHovering ? 56 : 32,
+          height: isHovering ? 56 : 32,
+          opacity: isHidden ? 0 : 0.6,
+          borderColor: isHovering
+            ? "oklch(0.78 0.16 70 / 60%)"
+            : "oklch(0.78 0.16 70 / 25%)",
+        }}
+        transition={{ type: "spring", damping: 20, stiffness: 400, mass: 0.5 }}
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
+          marginLeft: isHovering ? -28 : -16,
+          marginTop: isHovering ? -28 : -16,
         }}
       >
-        <motion.div
-          className="relative flex items-center justify-center rounded-full bg-white"
-          animate={{
-            width: isHovering ? 64 : isClicking ? 8 : 12,
-            height: isHovering ? 64 : isClicking ? 8 : 12,
-            opacity: isHidden ? 0 : 1,
-          }}
-          transition={{ type: "spring", damping: 20, stiffness: 400, mass: 0.5 }}
-          style={{ marginLeft: isHovering ? -32 : isClicking ? -4 : -6, marginTop: isHovering ? -32 : isClicking ? -4 : -6 }}
-        >
-          {hoverText && isHovering && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              className="text-[10px] font-semibold uppercase tracking-wider text-black"
-            >
-              {hoverText}
-            </motion.span>
-          )}
-        </motion.div>
+        {hoverText && isHovering && (
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="text-[9px] font-semibold uppercase tracking-wider text-foreground"
+          >
+            {hoverText}
+          </motion.span>
+        )}
       </motion.div>
-
-      {/* Global style to hide default cursor */}
-      <style>{`
-        @media (pointer: fine) {
-          * { cursor: none !important; }
-        }
-      `}</style>
-    </>
+    </motion.div>
   );
 }

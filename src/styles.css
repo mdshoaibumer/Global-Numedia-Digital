@@ -30,6 +30,8 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-brand-warm: var(--brand-warm);
+  --color-brand-warm-foreground: var(--brand-warm-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -74,6 +76,10 @@
   --accent: oklch(0.50 0.20 275);
   --accent-foreground: oklch(0.99 0.003 247);
 
+  /* Warm gold signature accent — brand differentiator */
+  --brand-warm: oklch(0.78 0.16 70);
+  --brand-warm-foreground: oklch(0.18 0.04 264);
+
   --success: oklch(0.7 0.16 162);
   --success-foreground: oklch(0.99 0.003 247);
 
@@ -103,6 +109,8 @@
   --muted-foreground: oklch(0.75 0.02 260);
   --accent: oklch(0.70 0.18 275);
   --accent-foreground: oklch(0.14 0.03 264);
+  --brand-warm: oklch(0.82 0.14 70);
+  --brand-warm-foreground: oklch(0.14 0.03 264);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
   --ring: oklch(0.60 0.20 275);
@@ -179,10 +187,8 @@
 
 @utility grid-bg {
   background-image:
-    linear-gradient(to right, rgba(15, 23, 42, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+    radial-gradient(circle at 20% 30%, oklch(0.78 0.16 70 / 4%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, oklch(0.50 0.20 275 / 4%) 0%, transparent 50%);
 }
 
 @utility dot-bg {
@@ -368,4 +374,30 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Mobile performance: reduce GPU-intensive effects */
+@media (max-width: 767px) {
+  .animate-aurora {
+    animation: none !important;
+  }
+  .animate-grain {
+    animation: none !important;
+  }
+  .grain-overlay::before {
+    animation: none !important;
+    display: none;
+  }
+  .backdrop-blur-2xl,
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px) !important;
+  }
+}
+
+/* Smooth content-visibility for off-screen sections */
+@layer base {
+  section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
 }

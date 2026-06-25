@@ -2,18 +2,34 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Globe, ArrowRight, CheckCircle2, XCircle, AlertTriangle,
-  Gauge, Search, Shield, Smartphone, Zap, BarChart3,
-  ArrowUpRight, Loader2,
+  Globe,
+  ArrowRight,
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  Gauge,
+  Search,
+  Shield,
+  Smartphone,
+  Zap,
+  BarChart3,
+  ArrowUpRight,
+  Loader2,
+  MessageCircle,
 } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
+import { COMPANY } from "@/lib/constants";
 
 export const Route = createFileRoute("/free-audit")({
   head: () => ({
     meta: [
       { title: "Free Website & Marketing Audit — Global Numedia" },
-      { name: "description", content: "Get an instant analysis of your website's SEO, speed, mobile-friendliness, and marketing effectiveness. Free, no obligation." },
+      {
+        name: "description",
+        content:
+          "Get an instant analysis of your website's SEO, speed, mobile-friendliness, and marketing effectiveness. Free, no obligation.",
+      },
     ],
   }),
   component: FreeAuditPage,
@@ -31,7 +47,8 @@ interface AuditResult {
 function generateMockAudit(url: string): AuditResult {
   // Simulate varied but realistic scores based on URL length (deterministic-ish)
   const seed = url.length * 7 + url.charCodeAt(url.length - 1);
-  const rand = (min: number, max: number) => min + ((seed * 13 + min * 7) % (max - min));
+  const rand = (min: number, max: number) =>
+    min + ((seed * 13 + min * 7) % (max - min));
 
   return {
     overall: rand(38, 72),
@@ -115,10 +132,14 @@ function FreeAuditPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#030712] pb-20 pt-32 text-white">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
         <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-indigo-500/10 blur-3xl" />
 
@@ -131,7 +152,9 @@ function FreeAuditPage() {
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 backdrop-blur-xl">
                 <Gauge className="h-3.5 w-3.5 text-violet-400" />
-                <span className="text-[13px] font-medium text-white/80">Free Instant Analysis</span>
+                <span className="text-[13px] font-medium text-white/80">
+                  Free Instant Analysis
+                </span>
               </div>
             </motion.div>
 
@@ -141,7 +164,8 @@ function FreeAuditPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              Get your free<br />
+              Get your free
+              <br />
               <span className="bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">
                 website & marketing audit.
               </span>
@@ -153,8 +177,8 @@ function FreeAuditPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              We'll scan your website for SEO, speed, mobile, security, and content issues
-              — and show you exactly where revenue is hiding.
+              We'll scan your website for SEO, speed, mobile, security, and
+              content issues — and show you exactly where revenue is hiding.
             </motion.p>
 
             {/* Input form */}
@@ -181,6 +205,9 @@ function FreeAuditPage() {
                       onChange={(e) => setUrl(e.target.value)}
                       placeholder="Enter your website URL..."
                       required
+                      inputMode="url"
+                      autoComplete="url"
+                      aria-label="Website URL"
                       className="flex-1 bg-transparent px-2 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none"
                     />
                     <button
@@ -203,7 +230,8 @@ function FreeAuditPage() {
                   >
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
                       <p className="text-sm text-white/70">
-                        Great! We're analyzing <span className="font-semibold text-white">{url}</span>
+                        Great! We're analyzing{" "}
+                        <span className="font-semibold text-white">{url}</span>
                       </p>
                       <p className="mt-2 text-xs text-white/50">
                         Enter your email to receive the full detailed report:
@@ -215,6 +243,8 @@ function FreeAuditPage() {
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="your@email.com"
                           required
+                          autoComplete="email"
+                          aria-label="Email address"
                           className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-violet-500/50 focus:outline-none"
                         />
                         <button
@@ -242,9 +272,18 @@ function FreeAuditPage() {
 
               {step === "input" && (
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-xs text-white/40">
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> No credit card required</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> Instant results</span>
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> 100% free</span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> No
+                    credit card required
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />{" "}
+                    Instant results
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />{" "}
+                    100% free
+                  </span>
                 </div>
               )}
             </motion.div>
@@ -269,23 +308,56 @@ function FreeAuditPage() {
                       Your Website Score
                     </h2>
                     <div className="mt-6 inline-flex h-32 w-32 items-center justify-center rounded-full border-4 border-border bg-surface">
-                      <span className={`font-display text-5xl ${result.overall >= 70 ? "text-emerald-500" : result.overall >= 50 ? "text-amber-500" : "text-red-500"}`}>
+                      <span
+                        className={`font-display text-5xl ${result.overall >= 70 ? "text-emerald-500" : result.overall >= 50 ? "text-amber-500" : "text-red-500"}`}
+                      >
                         <Counter to={result.overall} suffix="" />
                       </span>
                     </div>
-                    <p className="mt-3 text-sm text-muted-foreground">out of 100</p>
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      out of 100
+                    </p>
                     <p className="mt-2 text-sm font-medium text-foreground">
-                      {result.overall >= 70 ? "Good — but there's room to grow" : result.overall >= 50 ? "Needs improvement — you're losing leads" : "Critical issues — you're leaving revenue on the table"}
+                      {result.overall >= 70
+                        ? "Good — but there's room to grow"
+                        : result.overall >= 50
+                          ? "Needs improvement — you're losing leads"
+                          : "Critical issues — you're leaving revenue on the table"}
                     </p>
                   </div>
 
                   {/* Category breakdown */}
                   <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    <AuditCategory icon={Search} label="SEO" score={result.seo.score} issues={result.seo.issues} />
-                    <AuditCategory icon={Zap} label="Page Speed" score={result.speed.score} issues={result.speed.issues} />
-                    <AuditCategory icon={Smartphone} label="Mobile" score={result.mobile.score} issues={result.mobile.issues} />
-                    <AuditCategory icon={Shield} label="Security" score={result.security.score} issues={result.security.issues} />
-                    <AuditCategory icon={BarChart3} label="Content & CRO" score={result.content.score} issues={result.content.issues} />
+                    <AuditCategory
+                      icon={Search}
+                      label="SEO"
+                      score={result.seo.score}
+                      issues={result.seo.issues}
+                    />
+                    <AuditCategory
+                      icon={Zap}
+                      label="Page Speed"
+                      score={result.speed.score}
+                      issues={result.speed.issues}
+                    />
+                    <AuditCategory
+                      icon={Smartphone}
+                      label="Mobile"
+                      score={result.mobile.score}
+                      issues={result.mobile.issues}
+                    />
+                    <AuditCategory
+                      icon={Shield}
+                      label="Security"
+                      score={result.security.score}
+                      issues={result.security.issues}
+                    />
+                    <AuditCategory
+                      icon={BarChart3}
+                      label="Content & CRO"
+                      score={result.content.score}
+                      issues={result.content.issues}
+                    />
                   </div>
 
                   {/* CTA */}
@@ -294,8 +366,9 @@ function FreeAuditPage() {
                       Want us to fix these issues?
                     </h3>
                     <p className="mt-3 text-[15px] text-muted-foreground">
-                      Book a free 30-minute call with a senior strategist. We'll walk through your audit
-                      and build a custom growth plan — no obligation, no pitch.
+                      Book a free 30-minute call with a senior strategist. We'll
+                      walk through your audit and build a custom growth plan —
+                      no obligation, no pitch.
                     </p>
                     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                       <a
@@ -306,7 +379,7 @@ function FreeAuditPage() {
                         <ArrowUpRight className="h-4 w-4" />
                       </a>
                       <a
-                        href="https://wa.me/919999999999"
+                        href={COMPANY.whatsapp}
                         className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-8 py-4 text-sm font-semibold text-foreground"
                       >
                         <MessageCircle className="h-4 w-4 text-emerald-500" />
@@ -327,23 +400,56 @@ function FreeAuditPage() {
           <div className="container-pro">
             <Reveal>
               <div className="mx-auto max-w-3xl text-center">
-                <h2 className="font-display text-3xl text-foreground">What you'll get in your free audit</h2>
+                <h2 className="font-display text-3xl text-foreground">
+                  What you'll get in your free audit
+                </h2>
                 <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
                   {[
-                    { icon: Search, title: "SEO Analysis", desc: "Meta tags, headings, sitemap, schema markup, keyword opportunities" },
-                    { icon: Zap, title: "Speed Report", desc: "Core Web Vitals, LCP, FID, CLS — with specific fix recommendations" },
-                    { icon: Smartphone, title: "Mobile Audit", desc: "Responsive design, tap targets, viewport, mobile UX issues" },
-                    { icon: Shield, title: "Security Check", desc: "SSL, headers, mixed content, cookie compliance" },
-                    { icon: BarChart3, title: "Content & CRO", desc: "Conversion rate potential, content gaps, lead gen opportunities" },
-                    { icon: Globe, title: "Competitor Snapshot", desc: "How you stack up against top 3 competitors in your space" },
+                    {
+                      icon: Search,
+                      title: "SEO Analysis",
+                      desc: "Meta tags, headings, sitemap, schema markup, keyword opportunities",
+                    },
+                    {
+                      icon: Zap,
+                      title: "Speed Report",
+                      desc: "Core Web Vitals, LCP, FID, CLS — with specific fix recommendations",
+                    },
+                    {
+                      icon: Smartphone,
+                      title: "Mobile Audit",
+                      desc: "Responsive design, tap targets, viewport, mobile UX issues",
+                    },
+                    {
+                      icon: Shield,
+                      title: "Security Check",
+                      desc: "SSL, headers, mixed content, cookie compliance",
+                    },
+                    {
+                      icon: BarChart3,
+                      title: "Content & CRO",
+                      desc: "Conversion rate potential, content gaps, lead gen opportunities",
+                    },
+                    {
+                      icon: Globe,
+                      title: "Competitor Snapshot",
+                      desc: "How you stack up against top 3 competitors in your space",
+                    },
                   ].map((item) => (
-                    <div key={item.title} className="flex gap-4 rounded-2xl border border-border bg-background p-5">
+                    <div
+                      key={item.title}
+                      className="flex gap-4 rounded-2xl border border-border bg-background p-5"
+                    >
                       <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
                         <item.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground">{item.title}</h3>
-                        <p className="mt-1 text-sm text-muted-foreground">{item.desc}</p>
+                        <h3 className="font-semibold text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -357,9 +463,29 @@ function FreeAuditPage() {
   );
 }
 
-function AuditCategory({ icon: Icon, label, score, issues }: { icon: typeof Search; label: string; score: number; issues: string[] }) {
-  const color = score >= 70 ? "text-emerald-500" : score >= 50 ? "text-amber-500" : "text-red-500";
-  const bg = score >= 70 ? "bg-emerald-500/10" : score >= 50 ? "bg-amber-500/10" : "bg-red-500/10";
+function AuditCategory({
+  icon: Icon,
+  label,
+  score,
+  issues,
+}: {
+  icon: typeof Search;
+  label: string;
+  score: number;
+  issues: string[];
+}) {
+  const color =
+    score >= 70
+      ? "text-emerald-500"
+      : score >= 50
+        ? "text-amber-500"
+        : "text-red-500";
+  const bg =
+    score >= 70
+      ? "bg-emerald-500/10"
+      : score >= 50
+        ? "bg-amber-500/10"
+        : "bg-red-500/10";
 
   return (
     <motion.div
@@ -369,7 +495,9 @@ function AuditCategory({ icon: Icon, label, score, issues }: { icon: typeof Sear
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`inline-flex h-9 w-9 items-center justify-center rounded-lg ${bg} ${color}`}>
+          <div
+            className={`inline-flex h-9 w-9 items-center justify-center rounded-lg ${bg} ${color}`}
+          >
             <Icon className="h-4 w-4" />
           </div>
           <span className="font-semibold text-foreground">{label}</span>
@@ -378,7 +506,10 @@ function AuditCategory({ icon: Icon, label, score, issues }: { icon: typeof Sear
       </div>
       <ul className="mt-4 space-y-2">
         {issues.map((issue, i) => (
-          <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+          <li
+            key={i}
+            className="flex items-start gap-2 text-xs text-muted-foreground"
+          >
             {score >= 70 ? (
               <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
             ) : score >= 50 ? (
