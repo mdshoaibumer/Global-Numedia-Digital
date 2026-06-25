@@ -1,0 +1,82 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight, Calendar, CheckCircle2, Mail, MessageCircle, Phone, Users2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Reveal } from "@/components/ui/Reveal";
+import { GlowOrb } from "@/components/ui/MagneticButton";
+import { client1, client2, client3 } from "./data";
+
+export function ContactCTA() {
+  const ctas = [
+    { icon: Calendar, label: "Free 30-min strategy call", sub: "With a senior strategist · no pitch", href: "/contact", primary: true },
+    { icon: MessageCircle, label: "WhatsApp our team", sub: "Avg. reply in 12 minutes", href: "https://wa.me/919999999999" },
+    { icon: Phone, label: "+91 99999 99999", sub: "Mon–Fri · 9:30am–7pm IST", href: "tel:+919999999999" },
+    { icon: Mail, label: "hello@globalnumedia.digital", sub: "We reply within one business day", href: "mailto:hello@globalnumedia.digital" },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-[#030712] py-24 text-white md:py-32">
+      <div className="absolute inset-0"><GlowOrb color="rgba(120, 119, 198, 0.1)" size={700} className="left-0 top-0 animate-aurora" /><GlowOrb color="rgba(139, 92, 246, 0.06)" size={500} className="right-0 bottom-0" /></div>
+      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+      <div className="container-pro relative">
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+          <Reveal variant="fade-right">
+            <div>
+              <motion.div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/4 px-4 py-2 backdrop-blur-xl" animate={{ boxShadow: ["0 0 0 0 rgba(16,185,129,0)", "0 0 0 8px rgba(16,185,129,0.1)", "0 0 0 0 rgba(16,185,129,0)"] }} transition={{ duration: 3, repeat: Infinity }}>
+                <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" /></span>
+                <span className="text-[13px] font-medium text-white/80">Currently accepting 4 new clients for Q3</span>
+              </motion.div>
+              <h2 className="mt-7 font-display text-[clamp(2.5rem,6vw,4rem)] leading-[1.05] tracking-[-0.02em]">Let's build a growth engine your board will{" "}<span className="bg-linear-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">brag about.</span></h2>
+              <p className="mt-6 max-w-xl text-[clamp(1rem,2vw,1.125rem)] leading-relaxed text-white/60">Tell us about your business. We'll send you a candid 7-page audit of your current marketing — what's working, what's broken, and where the biggest revenue is hiding.<span className="font-medium text-white/80"> Free, no obligation, replied within 48 hours.</span></p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/50">
+                <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-400" />NDA-friendly</div>
+                <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-400" />Senior strategist only</div>
+                <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-400" />No sales pitch</div>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal variant="fade-left" delay={0.15}>
+            <div className="grid gap-3">
+              {ctas.map((c) => (
+                <motion.a key={c.label} href={c.href} className={`group flex items-center justify-between gap-4 rounded-2xl border p-5 transition-all duration-300 ${c.primary ? "border-violet-500/30 bg-linear-to-r from-violet-500/15 to-indigo-500/5 hover:from-violet-500/25 hover:to-indigo-500/10 hover:shadow-[0_8px_30px_-8px_rgba(120,119,198,0.2)]" : "border-white/6 bg-white/2 hover:border-white/15 hover:bg-white/5"}`} whileHover={{ x: 4 }} transition={{ duration: 0.3 }}>
+                  <div className="flex items-center gap-4">
+                    <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${c.primary ? "bg-linear-to-br from-violet-500 to-indigo-500 text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)]" : "bg-white/6 text-white"}`}><c.icon className="h-5 w-5" /></div>
+                    <div><div className="font-display text-lg text-white">{c.label}</div><div className="text-xs text-white/50">{c.sub}</div></div>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 text-white/40 transition-all duration-300 group-hover:rotate-45 group-hover:text-white" />
+                </motion.a>
+              ))}
+              <div className="mt-4 flex items-center gap-4 rounded-2xl border border-white/6 bg-white/2 p-5">
+                <div className="flex -space-x-2">
+                  <img src={client1} alt="" loading="lazy" width={36} height={36} className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]" />
+                  <img src={client2} alt="" loading="lazy" width={36} height={36} className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]" />
+                  <img src={client3} alt="" loading="lazy" width={36} height={36} className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]" />
+                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[11px] font-medium text-white ring-2 ring-[#030712]"><Users2 className="h-3.5 w-3.5" /></div>
+                </div>
+                <div className="text-xs text-white/60"><span className="font-semibold text-white/90">240+ founders & CMOs</span> have run their growth audit with us.</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function MobileFixedCTA() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 80, opacity: 0 }} transition={{ type: "spring", bounce: 0.15, duration: 0.5 }} className="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+          <Link to="/contact" className="flex items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-violet-500 to-indigo-500 px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_40px_-8px_rgba(120,119,198,0.5)] backdrop-blur-xl">Book a Free Growth Audit <ArrowUpRight className="h-4 w-4" /></Link>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}

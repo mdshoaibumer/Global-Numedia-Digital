@@ -38,37 +38,42 @@ const cols = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 overflow-hidden bg-[#06101f] text-white">
-      <div className="absolute inset-0 dot-bg opacity-50" />
+    <footer className="sticky bottom-0 z-0 overflow-hidden bg-[#030712] text-white">
+      {/* Premium background effects */}
+      <div className="absolute inset-0 opacity-[0.015]" style={{
+        backgroundImage: "radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)",
+        backgroundSize: "24px 24px"
+      }} />
       <div
-        className="absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, #3b82f6 0%, transparent 70%)" }}
+        className="pointer-events-none absolute -top-40 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(120,119,198,0.6) 0%, transparent 70%)" }}
       />
       <div className="container-pro relative">
         <div className="grid gap-14 py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-[#06101f]">
-                <span className="font-display text-xl leading-none">N</span>
+              <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl overflow-hidden">
+                <span className="absolute inset-0 bg-linear-to-br from-violet-500 to-indigo-500" />
+                <span className="relative font-display text-xl leading-none text-white">N</span>
               </span>
               <span className="text-base font-semibold tracking-tight">Global Numedia</span>
             </Link>
-            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-white/60">
               A senior growth team turning marketing budgets into measurable revenue for ambitious
               brands across the world.
             </p>
-            <div className="mt-6 space-y-3 text-sm text-white/80">
-              <a href="mailto:hello@Global Numedia.agency" className="flex items-center gap-3 hover:text-white">
-                <Mail className="h-4 w-4 text-accent" /> hello@Global Numedia.agency
+            <div className="mt-6 space-y-3 text-sm text-white/70">
+              <a href="mailto:hello@globalnumedia.digital" className="flex items-center gap-3 transition-colors hover:text-white">
+                <Mail className="h-4 w-4 text-violet-400" /> hello@globalnumedia.digital
               </a>
-              <a href="tel:+15551234567" className="flex items-center gap-3 hover:text-white">
-                <Phone className="h-4 w-4 text-accent" /> +1 (555) 123-4567
+              <a href="tel:+919999999999" className="flex items-center gap-3 transition-colors hover:text-white">
+                <Phone className="h-4 w-4 text-violet-400" /> +91 99999 99999
               </a>
-              <a href="https://wa.me/15551234567" className="flex items-center gap-3 hover:text-white">
-                <MessageCircle className="h-4 w-4 text-accent" /> WhatsApp us
+              <a href="https://wa.me/919999999999" className="flex items-center gap-3 transition-colors hover:text-white">
+                <MessageCircle className="h-4 w-4 text-emerald-400" /> WhatsApp us
               </a>
-              <div className="flex items-center gap-3 text-white/60">
-                <MapPin className="h-4 w-4 text-accent" /> Remote-first · New York · Dubai · London
+              <div className="flex items-center gap-3 text-white/50">
+                <MapPin className="h-4 w-4 text-violet-400" /> Bengaluru · Mumbai · Dubai · Singapore
               </div>
             </div>
           </div>
@@ -89,13 +94,13 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-6 border-t border-white/10 py-8 md:flex-row md:items-center">
-          <p className="text-sm text-white/55">© {new Date().getFullYear()} Global Numedia Agency. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-white/60">
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-            <a href="#" className="hover:text-white">Cookies</a>
-            <Link to="/contact" className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 font-medium text-[#06101f] hover:opacity-90">
+        <div className="flex flex-col items-start justify-between gap-6 border-t border-white/6 py-8 md:flex-row md:items-center">
+          <p className="text-sm text-white/40">© {new Date().getFullYear()} Global Numedia Digital. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-white/50">
+            <a href="#" className="transition-colors hover:text-white">Privacy</a>
+            <a href="#" className="transition-colors hover:text-white">Terms</a>
+            <a href="#" className="transition-colors hover:text-white">Cookies</a>
+            <Link to="/contact" className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-violet-500 to-indigo-500 px-4 py-2 font-medium text-white shadow-[0_8px_24px_-6px_rgba(120,119,198,0.4)] transition-all hover:shadow-[0_12px_32px_-6px_rgba(120,119,198,0.5)]">
               Start a project <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>

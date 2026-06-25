@@ -1,0 +1,16 @@
+export { Hero } from "./Hero";
+export { PartnerBar } from "./PartnerBar";
+export { TrustedBy } from "./TrustedBy";
+export { Story } from "./Story";
+export { ServicesShowcase } from "./ServicesShowcase";
+export { WhyUs } from "./WhyUs";
+export { Results } from "./Results";
+export { Industries } from "./Industries";
+export { Process } from "./Process";
+export { CaseStudies } from "./CaseStudies";
+export { Team } from "./Team";
+export { AwardsSection } from "./Awards";
+export { Timeline } from "./Timeline";
+export { Testimonials } from "./Testimonials";
+export { FAQ } from "./FAQ";
+export { ContactCTA, MobileFixedCTA } from "./ContactCTA";

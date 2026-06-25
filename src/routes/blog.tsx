@@ -40,7 +40,7 @@ function Blog() {
         <Reveal>
           <Link to="/blog" className="group relative block overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12">
             <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-              <div className="relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-[#06101f] via-[#102A43] to-[#3b82f6] lg:h-full">
+              <div className="relative h-56 overflow-hidden rounded-2xl bg-linear-to-br from-[#06101f] via-[#102A43] to-[#3b82f6] lg:h-full">
                 <div className="absolute inset-0 dot-bg opacity-40" />
                 <div className="absolute bottom-5 left-5 text-xs font-medium uppercase tracking-[0.18em] text-white/70">Featured</div>
               </div>

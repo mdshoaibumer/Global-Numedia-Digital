@@ -6,6 +6,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
 
@@ -72,6 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" },
+      { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/geist@1/dist/fonts/geist-sans/style.min.css" },
     ],
     scripts: [
       {
@@ -88,21 +90,64 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
   }),
   component: RootComponent,
+  pendingComponent: PendingComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
 
+function PendingComponent() {
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-full max-w-5xl px-6 py-20 space-y-8 animate-pulse">
+          <div className="space-y-4">
+            <div className="h-4 w-32 rounded-full bg-muted" />
+            <div className="h-12 w-3/4 rounded-2xl bg-muted" />
+            <div className="h-12 w-1/2 rounded-2xl bg-muted" />
+          </div>
+          <div className="h-5 w-2/3 rounded-lg bg-muted" />
+          <div className="grid gap-6 md:grid-cols-3 pt-8">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="space-y-4 rounded-3xl border border-border p-6">
+                <div className="h-12 w-12 rounded-2xl bg-muted" />
+                <div className="h-6 w-3/4 rounded-lg bg-muted" />
+                <div className="space-y-2">
+                  <div className="h-4 w-full rounded bg-muted" />
+                  <div className="h-4 w-5/6 rounded bg-muted" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
         <SiteHeader />
-        <main className="flex-1"><Outlet /></main>
-        <SiteFooter />
-        <FloatingContact />
+        <AnimatePresence mode="wait">
+          <motion.main
+            key={router.state.location.pathname}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+            className="flex-1"
+          >
+            <Outlet />
+          </motion.main>
+        </AnimatePresence>
       </div>
+      <SiteFooter />
+      <FloatingContact />
     </QueryClientProvider>
   );
 }
