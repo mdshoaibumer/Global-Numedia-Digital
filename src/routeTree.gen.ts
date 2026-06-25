@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as FreeAuditRouteImport } from './routes/free-audit'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
@@ -33,6 +34,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeAuditRoute = FreeAuditRouteImport.update({
+  id: '/free-audit',
+  path: '/free-audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/free-audit': typeof FreeAuditRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/ai-search': typeof ServicesAiSearchRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/free-audit': typeof FreeAuditRoute
   '/industries': typeof IndustriesRoute
   '/services/ai-search': typeof ServicesAiSearchRoute
   '/services/branding': typeof ServicesBrandingRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/free-audit': typeof FreeAuditRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/ai-search': typeof ServicesAiSearchRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/faq'
+    | '/free-audit'
     | '/industries'
     | '/services'
     | '/services/ai-search'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/faq'
+    | '/free-audit'
     | '/industries'
     | '/services/ai-search'
     | '/services/branding'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/faq'
+    | '/free-audit'
     | '/industries'
     | '/services'
     | '/services/ai-search'
@@ -212,6 +224,7 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  FreeAuditRoute: typeof FreeAuditRoute
   IndustriesRoute: typeof IndustriesRoute
   ServicesRoute: typeof ServicesRouteWithChildren
 }
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-audit': {
+      id: '/free-audit'
+      path: '/free-audit'
+      fullPath: '/free-audit'
+      preLoaderRoute: typeof FreeAuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -357,6 +377,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  FreeAuditRoute: FreeAuditRoute,
   IndustriesRoute: IndustriesRoute,
   ServicesRoute: ServicesRouteWithChildren,
 }

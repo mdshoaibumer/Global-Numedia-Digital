@@ -17,6 +17,7 @@ import { SmoothScrollProvider } from "@/components/ui/SmoothScroll";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ExitIntentPopup } from "@/components/ui/ExitIntentPopup";
+import { SocialProofToast } from "@/components/ui/SocialProofToast";
 
 function NotFoundComponent() {
   return (
@@ -85,10 +86,57 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Global Numedia",
-          description: "Digital marketing and growth agency",
-          url: "/",
-          sameAs: [],
+          name: "Global Numedia Digital",
+          alternateName: "Global Numedia",
+          description: "AI-native performance marketing agency. SEO, paid media, branding, and growth systems for ambitious businesses since 2013.",
+          url: "https://globalnumedia.digital",
+          logo: "https://globalnumedia.digital/logo.png",
+          foundingDate: "2013",
+          numberOfEmployees: { "@type": "QuantitativeValue", minValue: 25, maxValue: 50 },
+          areaServed: ["India", "UAE", "Singapore", "Global"],
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+91-99999-99999",
+            contactType: "sales",
+            availableLanguage: ["English", "Hindi"],
+          },
+          sameAs: [
+            "https://www.linkedin.com/company/global-numedia",
+            "https://www.instagram.com/globalnumedia",
+            "https://twitter.com/globalnumedia",
+          ],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "87",
+            bestRating: "5",
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Digital Marketing Services",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Search & AEO" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Content Marketing" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Ads Management" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Advertising" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Design & Development" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding & Identity" } },
+            ],
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Global Numedia Digital",
+          url: "https://globalnumedia.digital",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://globalnumedia.digital/blog?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
         }),
       },
     ],
@@ -139,6 +187,7 @@ function RootComponent() {
         <CustomCursor />
         <ScrollProgress />
         <ExitIntentPopup />
+        <SocialProofToast />
         <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
           <SiteHeader />
           <AnimatePresence mode="wait">

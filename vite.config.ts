@@ -9,4 +9,18 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          if (id.includes("node_modules/react-dom")) return "vendor-react";
+          if (id.includes("node_modules/react/")) return "vendor-react";
+          if (id.includes("node_modules/framer-motion")) return "vendor-motion";
+          if (id.includes("node_modules/@tanstack")) return "vendor-router";
+          if (id.includes("node_modules/lenis")) return "vendor-scroll";
+          if (id.includes("node_modules/gsap")) return "vendor-gsap";
+        },
+      },
+    },
+  },
 });
