@@ -1,0 +1,50 @@
+import { test, expect } from "@playwright/test";
+
+test.describe("Homepage", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
+    // Wait for app to hydrate
+    await page.waitForSelector("h1", { timeout: 15000 });
+  });
+
+  test("loads and shows hero heading", async ({ page }) => {
+    const h1 = page.locator("h1");
+    await expect(h1).toBeVisible({ timeout: 15000 });
+    await expect(h1).toContainText("growth partner");
+  });
+
+  test("header is visible and contains brand name", async ({ page }) => {
+    await expect(page.locator("header").getByText("Global Numedia")).toBeVisible({ timeout: 10000 });
+  });
+
+  test("navigation links are present", async ({ page }) => {
+    const nav = page.getByRole("navigation", { name: "Main navigation" });
+    await expect(nav).toBeVisible({ timeout: 10000 });
+    await expect(nav.getByText("Services")).toBeVisible();
+    await expect(nav.getByText("About")).toBeVisible();
+    await expect(nav.getByText("Contact")).toBeVisible();
+  });
+
+  test("hero CTA buttons are visible", async ({ page }) => {
+    await expect(
+      page.getByRole("link", { name: /book free growth audit/i }),
+    ).toBeVisible({ timeout: 15000 });
+    await expect(
+      page.getByRole("link", { name: /whatsapp/i }).first(),
+    ).toBeVisible();
+  });
+
+  test("services section renders cards", async ({ page }) => {
+    const section = page.locator("#services");
+    await section.scrollIntoViewIfNeeded();
+    await expect(section.getByText("AI Search & AEO")).toBeVisible({ timeout: 10000 });
+    await expect(section.getByText("SEO & Content")).toBeVisible();
+    await expect(section.getByText("Google Ads")).toBeVisible();
+  });
+
+  test("footer is present", async ({ page }) => {
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(1000);
+    await expect(page.locator("footer").getByText("hello@globalnumedia.digital")).toBeVisible({ timeout: 10000 });
+  });
+});
