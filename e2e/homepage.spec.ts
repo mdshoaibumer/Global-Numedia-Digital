@@ -59,7 +59,7 @@ test.describe("Homepage", () => {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(1000);
     await expect(
-      page.locator("footer").getByText("hello@globalnumedia.digital"),
+      page.locator("footer").getByText("support@globalnumedia.in"),
     ).toBeVisible({ timeout: 10000 });
   });
 });

@@ -6,11 +6,11 @@
 export const COMPANY = {
   name: "Global Numedia",
   domain: "globalnumedia.digital",
-  email: "hello@globalnumedia.digital",
-  phone: "+91 80888 09090",
-  phoneRaw: "+918088809090",
+  email: "support@globalnumedia.in",
+  phone: "+91 96862 24977",
+  phoneRaw: "+919686224977",
   whatsapp:
-    "https://wa.me/918088809090?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project.",
+    "https://wa.me/919686224977?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   calendly: "https://calendly.com/globalnumedia/consultation",
   address: "1042, 3500 State Road 38 E Ste 300, Lafayette, IN 47905",
 } as const;
