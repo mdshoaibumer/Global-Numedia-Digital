@@ -40,15 +40,24 @@ export function Hero() {
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute left-1/4 top-0 hidden h-[800px] w-[800px] rounded-full md:block animate-aurora"
-          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.15) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(120, 119, 198, 0.15) 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute right-0 top-1/3 hidden h-[600px] w-[600px] rounded-full md:block"
-          style={{ background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
+          }}
         />
         <div
           className="absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full md:hidden"
-          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)",
+          }}
         />
       </div>
       <div
@@ -108,9 +117,7 @@ export function Hero() {
               >
                 grow{" "}
                 <span className="relative italic">
-                  <span
-                    className="bg-linear-to-r from-violet-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent animate-gradient-shift"
-                  >
+                  <span className="bg-linear-to-r from-violet-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent animate-gradient-shift">
                     digitally.
                   </span>
                   <motion.svg

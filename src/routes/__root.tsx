@@ -106,8 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           property: "og:image:alt",
-          content:
-            "Global Numedia — Digital Marketing & Growth Agency",
+          content: "Global Numedia — Digital Marketing & Growth Agency",
         },
         {
           property: "og:image:width",

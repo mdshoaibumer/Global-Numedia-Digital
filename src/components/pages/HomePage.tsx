@@ -3,7 +3,6 @@ import {
   Hero,
   ServicesShowcase,
   WhyUs,
-  Testimonials,
   FAQ,
   ContactCTA,
   MobileFixedCTA,
@@ -43,11 +42,7 @@ export default function HomePage() {
           <WhyUs />
         </Suspense>
       </SectionErrorBoundary>
-      <SectionErrorBoundary>
-        <Suspense fallback={<SectionSkeleton />}>
-          <Testimonials />
-        </Suspense>
-      </SectionErrorBoundary>
+
       <SectionErrorBoundary>
         <Suspense fallback={<SectionSkeleton />}>
           <FAQ />

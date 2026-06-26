@@ -1,21 +1,45 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Navigation & Routing", () => {
-  test("can navigate to services page", async ({ page }) => {
+  test("can navigate to services page", async ({ page, isMobile }) => {
     await page.goto("/");
-    await page.getByRole("navigation", { name: "Main navigation" }).getByText("Services").click();
+    if (isMobile) {
+      await page.getByRole("button", { name: /open menu/i }).click();
+      await page
+        .getByRole("navigation", { name: "Mobile navigation" })
+        .getByText("Services")
+        .click();
+    } else {
+      await page
+        .getByRole("navigation", { name: "Main navigation" })
+        .getByText("Services")
+        .click();
+    }
     await expect(page).toHaveURL(/\/services/);
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible({
+      timeout: 10000,
+    });
   });
 
-  test("can navigate to contact page", async ({ page }) => {
+  test("can navigate to contact page", async ({ page, isMobile }) => {
     await page.goto("/");
-    await page.getByRole("navigation", { name: "Main navigation" }).getByText("Contact").click();
+    if (isMobile) {
+      await page.getByRole("button", { name: /open menu/i }).click();
+      await page
+        .getByRole("navigation", { name: "Mobile navigation" })
+        .getByText("Contact")
+        .click();
+    } else {
+      await page
+        .getByRole("navigation", { name: "Main navigation" })
+        .getByText("Contact")
+        .click();
+    }
     await expect(page).toHaveURL(/\/contact/);
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible({
+      timeout: 10000,
+    });
   });
-
-
 
   test("404 page shows for invalid routes", async ({ page }) => {
     await page.goto("/this-does-not-exist");

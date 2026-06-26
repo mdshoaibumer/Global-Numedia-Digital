@@ -46,7 +46,11 @@ export function SiteFooter() {
         <div className="grid gap-14 py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-9 w-9 rounded-full bg-white object-cover p-[2px]" />
+              <img
+                src="/logo.jpeg"
+                alt="Global Numedia Logo"
+                className="h-9 w-9 rounded-full bg-white object-cover p-[2px]"
+              />
               <span className="text-base font-semibold tracking-tight">
                 Global Numedia
               </span>
@@ -76,8 +80,7 @@ export function SiteFooter() {
                 us
               </a>
               <div className="flex items-center gap-3 text-white/50">
-                <MapPin className="h-4 w-4 text-violet-400" />{" "}
-                {COMPANY.locations}
+                <MapPin className="h-4 w-4 text-violet-400" /> {COMPANY.address}
               </div>
             </div>
           </div>

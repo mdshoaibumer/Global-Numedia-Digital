@@ -125,9 +125,7 @@ function Contact() {
               <div className="rounded-2xl border border-border bg-surface p-5">
                 <div className="flex items-center gap-3 text-sm">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span className="text-foreground">
-                    Bengaluru · Mumbai · Dubai · Singapore
-                  </span>
+                  <span className="text-foreground">{COMPANY.address}</span>
                 </div>
               </div>
 

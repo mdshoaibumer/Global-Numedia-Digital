@@ -45,7 +45,10 @@ export function ContactCTA() {
       <div className="absolute inset-0">
         <div
           className="absolute left-0 top-0 hidden h-[600px] w-[600px] rounded-full md:block animate-aurora"
-          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)",
+          }}
         />
       </div>
       <div

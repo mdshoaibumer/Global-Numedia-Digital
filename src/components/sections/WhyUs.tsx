@@ -39,7 +39,10 @@ export function WhyUs() {
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute left-0 top-0 hidden h-[500px] w-[500px] rounded-full md:block"
-          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.06) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(120, 119, 198, 0.06) 0%, transparent 70%)",
+          }}
         />
       </div>
       <div

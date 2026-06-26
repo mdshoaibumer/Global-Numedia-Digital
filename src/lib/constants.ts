@@ -12,5 +12,5 @@ export const COMPANY = {
   whatsapp:
     "https://wa.me/918088809090?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   calendly: "https://calendly.com/globalnumedia/consultation",
-  locations: "Bengaluru · Mumbai · Dubai · Singapore",
+  address: "1042, 3500 State Road 38 E Ste 300, Lafayette, IN 47905",
 } as const;
