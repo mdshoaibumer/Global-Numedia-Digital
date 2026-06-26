@@ -31,7 +31,7 @@ export function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-          className="fixed bottom-4 left-4 right-4 z-9999 mx-auto max-w-lg rounded-2xl border border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl md:left-6 md:right-auto"
+          className="fixed bottom-4 left-4 right-4 z-9999 mx-auto max-w-lg rounded-2xl border border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl md:right-6 md:left-auto"
         >
           <button
             onClick={decline}
