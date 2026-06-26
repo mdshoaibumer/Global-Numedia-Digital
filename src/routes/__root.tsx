@@ -6,7 +6,6 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
 
@@ -272,23 +271,13 @@ function PendingComponent() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
   return (
     <QueryClientProvider client={queryClient}>
       <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
         <SiteHeader />
-        <AnimatePresence mode="wait">
-          <motion.main
-            key={router.state.location.pathname}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ type: "spring", bounce: 0, duration: 0.35 }}
-            className="flex-1"
-          >
-            <Outlet />
-          </motion.main>
-        </AnimatePresence>
+        <main className="flex-1">
+          <Outlet />
+        </main>
       </div>
       <SiteFooter />
       <FloatingContact />
