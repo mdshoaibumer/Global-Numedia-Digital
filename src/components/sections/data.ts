@@ -6,6 +6,7 @@ import {
   Compass,
   Eye,
   Heart,
+  Blocks,
 } from "lucide-react";
 
 import client1 from "@/assets/client-1.jpg";
@@ -62,6 +63,18 @@ export const services = [
     ],
     to: "/services",
     gradient: "from-amber-500/30 to-orange-500/15",
+  },
+  {
+    icon: Blocks,
+    title: "Blockchain Development",
+    desc: "Custom blockchain solutions — smart contracts, dApps, token development and Web3 integrations for your business.",
+    deliverables: [
+      "Smart contract development",
+      "Decentralized applications",
+      "Web3 integration",
+    ],
+    to: "/services/blockchain",
+    gradient: "from-blue-500/30 to-cyan-500/15",
   },
 ];
 
