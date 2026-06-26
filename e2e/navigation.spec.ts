@@ -15,12 +15,7 @@ test.describe("Navigation & Routing", () => {
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible({ timeout: 10000 });
   });
 
-  test("can navigate to about page", async ({ page }) => {
-    await page.goto("/");
-    await page.getByRole("navigation", { name: "Main navigation" }).getByText("About").click();
-    await expect(page).toHaveURL(/\/about/);
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible({ timeout: 10000 });
-  });
+
 
   test("404 page shows for invalid routes", async ({ page }) => {
     await page.goto("/this-does-not-exist");

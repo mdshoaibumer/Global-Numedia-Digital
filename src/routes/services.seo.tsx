@@ -12,16 +12,19 @@ import { ServicePage } from "@/components/layout/ServicePage";
 export const Route = createFileRoute("/services/seo")({
   head: () => ({
     meta: [
-      { title: "SEO Services — Global Numedia" },
+      { title: "Search Engine Optimization — Global Numedia" },
       {
         name: "description",
         content:
-          "Technical SEO, content and link-building programs that compound into pipeline.",
+          "Expert SEO services to boost your rankings, drive organic traffic and grow your business online.",
       },
-      { property: "og:title", content: "SEO Services — Global Numedia" },
+      {
+        property: "og:title",
+        content: "Search Engine Optimization — Global Numedia",
+      },
       {
         property: "og:description",
-        content: "Rank for the keywords that move your number.",
+        content: "SEO that drives real business results.",
       },
       { property: "og:url", content: "/services/seo" },
     ],
@@ -30,70 +33,70 @@ export const Route = createFileRoute("/services/seo")({
   component: () => (
     <ServicePage
       eyebrow="Search Engine Optimization"
-      title="Rank where it pays."
-      description="Technical, content and authority programs engineered to compound traffic, leads and revenue — not just keywords."
+      title="Rank higher, grow faster."
+      description="Comprehensive SEO strategies that improve your search visibility, drive qualified traffic and generate leads consistently."
       bullets={[
-        "Full technical SEO audit and remediation roadmap",
-        "Topical maps tied to revenue and buying intent",
-        "On-page optimization across templates and content",
-        "Editorial content production with subject-matter experts",
-        "White-hat link-building from real publications",
-        "Local SEO and Google Business Profile management",
+        "Technical SEO audit and optimization",
+        "Keyword research and strategy",
+        "On-page and off-page optimization",
+        "Content optimization for search",
+        "Link building and authority development",
+        "Local SEO and Google Business Profile",
       ]}
       deliverables={[
         {
           icon: Wrench,
-          title: "Technical foundation",
-          desc: "Core Web Vitals, indexation, schema, internal linking.",
+          title: "Technical SEO",
+          desc: "Site speed, crawlability, indexation and schema markup.",
         },
         {
           icon: Search,
           title: "Keyword strategy",
-          desc: "Mapped to revenue, not search volume.",
+          desc: "Target the terms your customers are searching for.",
         },
         {
           icon: FileText,
-          title: "Editorial content",
-          desc: "4–12 pieces per month from senior writers.",
+          title: "Content optimization",
+          desc: "Optimize existing and new content for search engines.",
         },
         {
           icon: Link2,
-          title: "Authority building",
-          desc: "Digital PR, niche links, partnerships.",
+          title: "Link building",
+          desc: "Quality backlinks from relevant, authoritative sites.",
         },
         {
           icon: MapPin,
-          title: "Local visibility",
-          desc: "GBP, citations, reviews and map-pack dominance.",
+          title: "Local SEO",
+          desc: "Dominate local search results in your market.",
         },
         {
           icon: BarChart3,
-          title: "Attribution dashboard",
-          desc: "Pipeline-attributed reporting, refreshed daily.",
+          title: "Reporting",
+          desc: "Monthly reports with rankings, traffic and conversions.",
         },
       ]}
       metrics={[
-        { value: "+248%", label: "median organic traffic in 9 months" },
-        { value: "3.2x", label: "more booked calls from organic" },
-        { value: "180+", label: "first-page rankings per program" },
-        { value: "98%", label: "of clients retain past month 6" },
+        { value: "+200%", label: "average organic traffic growth" },
+        { value: "3x", label: "more leads from organic search" },
+        { value: "150+", label: "first-page rankings achieved" },
+        { value: "95%", label: "client retention rate" },
       ]}
       faq={[
         {
-          q: "How long until results?",
-          a: "We typically see lift in 60–90 days and meaningful pipeline within 4–6 months.",
+          q: "How long until I see results?",
+          a: "SEO is a long-term strategy. Expect to see meaningful results within 3-6 months.",
         },
         {
-          q: "Do you publish content for us?",
-          a: "Yes — we manage strategy, writing, editing, publishing and internal linking end-to-end.",
+          q: "Do you guarantee rankings?",
+          a: "No one can guarantee specific rankings, but we have a proven track record of delivering growth.",
         },
         {
-          q: "What if we already have an in-house team?",
-          a: "We pair beautifully. We'll embed as a senior strategy + execution layer.",
+          q: "What industries do you work with?",
+          a: "We work across industries — our strategies are tailored to your specific market and audience.",
         },
         {
           q: "Is local SEO included?",
-          a: "If you have physical locations, local is bundled at no extra cost.",
+          a: "Yes, local SEO is part of our standard package for businesses with physical locations.",
         },
       ]}
     />

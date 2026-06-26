@@ -3,15 +3,8 @@ import {
   Search,
   Target,
   Megaphone,
-  Globe,
-  Zap,
-  Workflow,
-  MessageCircle,
-  Mail,
-  LineChart,
-  BarChart3,
-  Brain,
-  MapPin,
+  Smartphone,
+  FileText,
   ArrowUpRight,
 } from "lucide-react";
 import { PageHero, CTAStrip } from "@/components/layout/PageHero";
@@ -24,13 +17,13 @@ export const Route = createFileRoute("/services/")({
       {
         name: "description",
         content:
-          "SEO, paid media, web, branding, automation and AI marketing. A full-stack growth team on demand.",
+          "Content marketing, app development, SEO, PPC and social media marketing services for growing businesses.",
       },
       { property: "og:title", content: "Services — Global Numedia" },
       {
         property: "og:description",
         content:
-          "Full-stack growth services across SEO, paid media, brand and lifecycle.",
+          "Digital marketing and development services for growing businesses.",
       },
       { property: "og:url", content: "/services" },
     ],
@@ -41,82 +34,34 @@ export const Route = createFileRoute("/services/")({
 
 const services = [
   {
-    icon: Search,
-    title: "Search Engine Optimization",
-    desc: "Rank for high-intent terms that drive pipeline.",
-    to: "/services/seo",
+    icon: FileText,
+    title: "Content Marketing",
+    desc: "Strategic content that drives traffic and generates leads.",
+    to: "/services/content-marketing",
   },
   {
-    icon: MapPin,
-    title: "Local SEO",
-    desc: "Own the map pack in every market you serve.",
+    icon: Smartphone,
+    title: "App Development",
+    desc: "Custom mobile and web apps built for your business.",
+    to: "/services/app-development",
+  },
+  {
+    icon: Search,
+    title: "Search Engine Optimization",
+    desc: "Rank higher and drive qualified organic traffic.",
     to: "/services/seo",
   },
   {
     icon: Target,
-    title: "Google Ads Management",
-    desc: "Search, shopping and PMax that prints ROAS.",
-    to: "/services/google-ads",
+    title: "PPC Management",
+    desc: "Paid advertising that delivers measurable ROI.",
+    to: "/services/ppc",
   },
   {
     icon: Megaphone,
-    title: "Meta Ads Management",
-    desc: "Creative-led paid social, scaled cleanly.",
-    to: "/services/social-media",
-  },
-  {
-    icon: Zap,
     title: "Social Media Marketing",
-    desc: "Organic systems that compound brand demand.",
+    desc: "Build your brand and engage your audience on social.",
     to: "/services/social-media",
-  },
-  {
-    icon: Globe,
-    title: "Website Design & Development",
-    desc: "Sites that convert, not just look pretty.",
-    to: "/services/web-development",
-  },
-  {
-    icon: Zap,
-    title: "Branding & Identity Design",
-    desc: "Brands that earn premium pricing.",
-    to: "/services/branding",
-  },
-  {
-    icon: Workflow,
-    title: "Marketing Automation",
-    desc: "Lifecycle journeys, scoring, revenue ops.",
-    to: "/services",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp Marketing",
-    desc: "Conversational funnels with 90%+ open rates.",
-    to: "/services",
-  },
-  {
-    icon: Mail,
-    title: "Email Marketing",
-    desc: "Flows and broadcasts that print revenue.",
-    to: "/services",
-  },
-  {
-    icon: LineChart,
-    title: "Conversion Rate Optimization",
-    desc: "Turn the traffic you already have into customers.",
-    to: "/services",
-  },
-  {
-    icon: BarChart3,
-    title: "Analytics & Reporting",
-    desc: "Clean attribution, live dashboards, weekly reviews.",
-    to: "/services",
-  },
-  {
-    icon: Brain,
-    title: "AI Marketing Solutions",
-    desc: "Agents and workflows that compress execution.",
-    to: "/services",
   },
 ];
 

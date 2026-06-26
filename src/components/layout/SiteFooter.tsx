@@ -6,32 +6,18 @@ const cols = [
   {
     title: "Services",
     links: [
+      { to: "/services/content-marketing", label: "Content Marketing" },
+      { to: "/services/app-development", label: "App Development" },
       { to: "/services/seo", label: "SEO" },
-      { to: "/services/google-ads", label: "Google Ads" },
+      { to: "/services/ppc", label: "PPC Management" },
       { to: "/services/social-media", label: "Social Media" },
-      { to: "/services/web-development", label: "Web Development" },
-      { to: "/services/branding", label: "Branding" },
       { to: "/services", label: "All services" },
-    ],
-  },
-  {
-    title: "Industries",
-    links: [
-      { to: "/industries", label: "Healthcare" },
-      { to: "/industries", label: "Real Estate" },
-      { to: "/industries", label: "Restaurants" },
-      { to: "/industries", label: "E-commerce" },
-      { to: "/industries", label: "Hospitality" },
-      { to: "/industries", label: "Education" },
     ],
   },
   {
     title: "Company",
     links: [
-      { to: "/about", label: "About" },
-      { to: "/case-studies", label: "Case studies" },
-      { to: "/blog", label: "Insights" },
-      { to: "/faq", label: "FAQ" },
+      { to: "/services", label: "Services" },
       { to: "/contact", label: "Contact" },
     ],
   },

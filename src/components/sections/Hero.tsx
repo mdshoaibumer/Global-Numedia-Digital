@@ -8,7 +8,6 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, MessageCircle, Star, ShieldCheck } from "lucide-react";
 import { useRef } from "react";
 import { Counter } from "@/components/ui/Counter";
-import { MagneticButton, GlowOrb } from "@/components/ui/MagneticButton";
 import { COMPANY, STATS } from "@/lib/constants";
 
 export function Hero() {
@@ -40,21 +39,17 @@ export function Hero() {
       className="relative min-h-screen overflow-hidden bg-[#030712]"
     >
       <div className="absolute inset-0" aria-hidden="true">
-        <GlowOrb
-          color="rgba(120, 119, 198, 0.15)"
-          size={800}
-          className="left-1/4 top-0 animate-aurora hidden md:block"
+        <div
+          className="absolute left-1/4 top-0 hidden h-[800px] w-[800px] rounded-full md:block animate-aurora"
+          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.15) 0%, transparent 70%)" }}
         />
-        <GlowOrb
-          color="rgba(99, 102, 241, 0.1)"
-          size={600}
-          className="right-0 top-1/3 hidden md:block"
+        <div
+          className="absolute right-0 top-1/3 hidden h-[600px] w-[600px] rounded-full md:block"
+          style={{ background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)" }}
         />
-        {/* Single subtle orb on mobile for performance */}
-        <GlowOrb
-          color="rgba(120, 119, 198, 0.08)"
-          size={400}
-          className="left-1/4 top-0 md:hidden"
+        <div
+          className="absolute left-1/4 top-0 h-[400px] w-[400px] rounded-full md:hidden"
+          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)" }}
         />
       </div>
       <div
@@ -214,8 +209,7 @@ export function Hero() {
               delay: 1.2,
             }}
           >
-            <MagneticButton strength={0.15}>
-              <motion.div
+            <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -231,8 +225,6 @@ export function Hero() {
                   <div className="absolute inset-0 bg-linear-to-r from-violet-400 to-indigo-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </Link>
               </motion.div>
-            </MagneticButton>
-            <MagneticButton strength={0.15}>
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -246,7 +238,6 @@ export function Hero() {
                   WhatsApp our strategists
                 </a>
               </motion.div>
-            </MagneticButton>
           </motion.div>
 
           <motion.div

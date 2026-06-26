@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { BarChart3, ShieldCheck, Star, Workflow, Crown } from "lucide-react";
 import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import { GlowOrb } from "@/components/ui/MagneticButton";
 
 export function WhyUs() {
   const items = [
@@ -38,10 +37,9 @@ export function WhyUs() {
   return (
     <section className="relative overflow-hidden bg-[#030712] py-24 text-white md:py-32 lg:py-40">
       <div className="absolute inset-0" aria-hidden="true">
-        <GlowOrb
-          color="rgba(120, 119, 198, 0.06)"
-          size={500}
-          className="left-0 top-0 hidden md:block"
+        <div
+          className="absolute left-0 top-0 hidden h-[500px] w-[500px] rounded-full md:block"
+          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.06) 0%, transparent 70%)" }}
         />
       </div>
       <div

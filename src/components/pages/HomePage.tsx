@@ -1,17 +1,12 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import {
   Hero,
-  PartnerBar,
-  TrustedBy,
   ServicesShowcase,
   WhyUs,
-  Results,
-  CaseStudies,
   Testimonials,
   FAQ,
   ContactCTA,
   MobileFixedCTA,
-  ROICalculator,
 } from "@/components/sections";
 import { SectionErrorBoundary } from "@/components/ui/SectionErrorBoundary";
 
@@ -39,12 +34,6 @@ export default function HomePage() {
         <Hero />
       </SectionErrorBoundary>
       <SectionErrorBoundary>
-        <PartnerBar />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary>
-        <TrustedBy />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary>
         <Suspense fallback={<SectionSkeleton />}>
           <ServicesShowcase />
         </Suspense>
@@ -56,22 +45,7 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary>
         <Suspense fallback={<SectionSkeleton />}>
-          <Results />
-        </Suspense>
-      </SectionErrorBoundary>
-      <SectionErrorBoundary>
-        <Suspense fallback={<SectionSkeleton />}>
-          <CaseStudies />
-        </Suspense>
-      </SectionErrorBoundary>
-      <SectionErrorBoundary>
-        <Suspense fallback={<SectionSkeleton />}>
           <Testimonials />
-        </Suspense>
-      </SectionErrorBoundary>
-      <SectionErrorBoundary>
-        <Suspense fallback={<SectionSkeleton />}>
-          <ROICalculator />
         </Suspense>
       </SectionErrorBoundary>
       <SectionErrorBoundary>

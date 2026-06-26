@@ -21,7 +21,6 @@ test.describe("Homepage", () => {
     const nav = page.getByRole("navigation", { name: "Main navigation" });
     await expect(nav).toBeVisible({ timeout: 10000 });
     await expect(nav.getByText("Services")).toBeVisible();
-    await expect(nav.getByText("About")).toBeVisible();
     await expect(nav.getByText("Contact")).toBeVisible();
   });
 
@@ -37,9 +36,9 @@ test.describe("Homepage", () => {
   test("services section renders cards", async ({ page }) => {
     const section = page.locator("#services");
     await section.scrollIntoViewIfNeeded();
-    await expect(section.getByText("AI Search & AEO")).toBeVisible({ timeout: 10000 });
-    await expect(section.getByText("SEO & Content")).toBeVisible();
-    await expect(section.getByText("Google Ads")).toBeVisible();
+    await expect(section.getByText("Custom Websites & Maintenance")).toBeVisible({ timeout: 10000 });
+    await expect(section.getByText("Graphics Designs")).toBeVisible();
+    await expect(section.getByText("SEO Marketing & Advertising")).toBeVisible();
   });
 
   test("footer is present", async ({ page }) => {

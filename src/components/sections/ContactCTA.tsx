@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Reveal } from "@/components/ui/Reveal";
-import { GlowOrb } from "@/components/ui/MagneticButton";
 import { client1, client2, client3 } from "./data";
 import { COMPANY, STATS } from "@/lib/constants";
 
@@ -46,10 +45,9 @@ export function ContactCTA() {
   return (
     <section className="relative overflow-hidden bg-[#030712] py-24 text-white md:py-32">
       <div className="absolute inset-0">
-        <GlowOrb
-          color="rgba(120, 119, 198, 0.08)"
-          size={600}
-          className="left-0 top-0 animate-aurora hidden md:block"
+        <div
+          className="absolute left-0 top-0 hidden h-[600px] w-[600px] rounded-full md:block animate-aurora"
+          style={{ background: "radial-gradient(circle, rgba(120, 119, 198, 0.08) 0%, transparent 70%)" }}
         />
       </div>
       <div

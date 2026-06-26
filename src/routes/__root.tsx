@@ -13,12 +13,8 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { FloatingContact } from "@/components/layout/FloatingContact";
-import { SmoothScrollProvider } from "@/components/ui/SmoothScroll";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import { SocialProofToast } from "@/components/ui/SocialProofToast";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { Preloader } from "@/components/ui/Preloader";
 import { COMPANY } from "@/lib/constants";
 
 function NotFoundComponent() {
@@ -199,41 +195,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               itemListElement: [
                 {
                   "@type": "Offer",
-                  itemOffered: { "@type": "Service", name: "AI Search & AEO" },
-                },
-                {
-                  "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "SEO & Content Marketing",
+                    name: "Content Marketing",
                   },
                 },
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Google Ads Management",
+                    name: "App Development",
                   },
                 },
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Social Media Advertising",
+                    name: "Search Engine Optimization",
                   },
                 },
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Web Design & Development",
+                    name: "PPC Management",
                   },
                 },
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Branding & Identity",
+                    name: "Social Media Marketing",
                   },
                 },
               ],
@@ -247,12 +239,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "@type": "WebSite",
             name: "Global Numedia Digital",
             url: "https://globalnumedia.digital",
-            potentialAction: {
-              "@type": "SearchAction",
-              target:
-                "https://globalnumedia.digital/blog?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
           }),
         },
       ],
@@ -301,30 +287,25 @@ function RootComponent() {
   const router = useRouter();
   return (
     <QueryClientProvider client={queryClient}>
-      <SmoothScrollProvider>
-        <Preloader />
-        <ScrollProgress />
-        <SocialProofToast />
-        <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
-          <SiteHeader />
-          <AnimatePresence mode="wait">
-            <motion.main
-              key={router.state.location.pathname}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.35 }}
-              className="flex-1"
-            >
-              <Outlet />
-            </motion.main>
-          </AnimatePresence>
-        </div>
-        <SiteFooter />
-        <FloatingContact />
-        <BackToTop />
-        <CookieConsent />
-      </SmoothScrollProvider>
+      <div className="relative z-10 flex min-h-screen flex-col bg-background shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]">
+        <SiteHeader />
+        <AnimatePresence mode="wait">
+          <motion.main
+            key={router.state.location.pathname}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.35 }}
+            className="flex-1"
+          >
+            <Outlet />
+          </motion.main>
+        </AnimatePresence>
+      </div>
+      <SiteFooter />
+      <FloatingContact />
+      <BackToTop />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

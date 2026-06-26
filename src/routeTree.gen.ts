@@ -10,60 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as IndustriesRouteImport } from './routes/industries'
-import { Route as FreeAuditRouteImport } from './routes/free-audit'
-import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CaseStudiesRouteImport } from './routes/case-studies'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
 import { Route as ServicesSocialMediaRouteImport } from './routes/services.social-media'
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
-import { Route as ServicesGoogleAdsRouteImport } from './routes/services.google-ads'
-import { Route as ServicesBrandingRouteImport } from './routes/services.branding'
-import { Route as ServicesAiSearchRouteImport } from './routes/services.ai-search'
+import { Route as ServicesPpcRouteImport } from './routes/services.ppc'
+import { Route as ServicesContentMarketingRouteImport } from './routes/services.content-marketing'
+import { Route as ServicesAppDevelopmentRouteImport } from './routes/services.app-development'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndustriesRoute = IndustriesRouteImport.update({
-  id: '/industries',
-  path: '/industries',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FreeAuditRoute = FreeAuditRouteImport.update({
-  id: '/free-audit',
-  path: '/free-audit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CaseStudiesRoute = CaseStudiesRouteImport.update({
-  id: '/case-studies',
-  path: '/case-studies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -76,11 +39,6 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesWebDevelopmentRoute = ServicesWebDevelopmentRouteImport.update({
-  id: '/web-development',
-  path: '/web-development',
-  getParentRoute: () => ServicesRoute,
-} as any)
 const ServicesSocialMediaRoute = ServicesSocialMediaRouteImport.update({
   id: '/social-media',
   path: '/social-media',
@@ -91,141 +49,94 @@ const ServicesSeoRoute = ServicesSeoRouteImport.update({
   path: '/seo',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesGoogleAdsRoute = ServicesGoogleAdsRouteImport.update({
-  id: '/google-ads',
-  path: '/google-ads',
+const ServicesPpcRoute = ServicesPpcRouteImport.update({
+  id: '/ppc',
+  path: '/ppc',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesBrandingRoute = ServicesBrandingRouteImport.update({
-  id: '/branding',
-  path: '/branding',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesAiSearchRoute = ServicesAiSearchRouteImport.update({
-  id: '/ai-search',
-  path: '/ai-search',
+const ServicesContentMarketingRoute =
+  ServicesContentMarketingRouteImport.update({
+    id: '/content-marketing',
+    path: '/content-marketing',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesAppDevelopmentRoute = ServicesAppDevelopmentRouteImport.update({
+  id: '/app-development',
+  path: '/app-development',
   getParentRoute: () => ServicesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/free-audit': typeof FreeAuditRoute
-  '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
-  '/services/ai-search': typeof ServicesAiSearchRoute
-  '/services/branding': typeof ServicesBrandingRoute
-  '/services/google-ads': typeof ServicesGoogleAdsRoute
+  '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/social-media': typeof ServicesSocialMediaRoute
-  '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/free-audit': typeof FreeAuditRoute
-  '/industries': typeof IndustriesRoute
-  '/services/ai-search': typeof ServicesAiSearchRoute
-  '/services/branding': typeof ServicesBrandingRoute
-  '/services/google-ads': typeof ServicesGoogleAdsRoute
+  '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/social-media': typeof ServicesSocialMediaRoute
-  '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/free-audit': typeof FreeAuditRoute
-  '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRouteWithChildren
-  '/services/ai-search': typeof ServicesAiSearchRoute
-  '/services/branding': typeof ServicesBrandingRoute
-  '/services/google-ads': typeof ServicesGoogleAdsRoute
+  '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/content-marketing': typeof ServicesContentMarketingRoute
+  '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/social-media': typeof ServicesSocialMediaRoute
-  '/services/web-development': typeof ServicesWebDevelopmentRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/blog'
-    | '/case-studies'
     | '/contact'
-    | '/faq'
-    | '/free-audit'
-    | '/industries'
     | '/services'
-    | '/services/ai-search'
-    | '/services/branding'
-    | '/services/google-ads'
+    | '/services/app-development'
+    | '/services/content-marketing'
+    | '/services/ppc'
     | '/services/seo'
     | '/services/social-media'
-    | '/services/web-development'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
-    | '/blog'
-    | '/case-studies'
     | '/contact'
-    | '/faq'
-    | '/free-audit'
-    | '/industries'
-    | '/services/ai-search'
-    | '/services/branding'
-    | '/services/google-ads'
+    | '/services/app-development'
+    | '/services/content-marketing'
+    | '/services/ppc'
     | '/services/seo'
     | '/services/social-media'
-    | '/services/web-development'
     | '/services'
   id:
     | '__root__'
     | '/'
-    | '/about'
-    | '/blog'
-    | '/case-studies'
     | '/contact'
-    | '/faq'
-    | '/free-audit'
-    | '/industries'
     | '/services'
-    | '/services/ai-search'
-    | '/services/branding'
-    | '/services/google-ads'
+    | '/services/app-development'
+    | '/services/content-marketing'
+    | '/services/ppc'
     | '/services/seo'
     | '/services/social-media'
-    | '/services/web-development'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  BlogRoute: typeof BlogRoute
-  CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
-  FaqRoute: typeof FaqRoute
-  FreeAuditRoute: typeof FreeAuditRoute
-  IndustriesRoute: typeof IndustriesRoute
   ServicesRoute: typeof ServicesRouteWithChildren
 }
 
@@ -238,53 +149,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/industries': {
-      id: '/industries'
-      path: '/industries'
-      fullPath: '/industries'
-      preLoaderRoute: typeof IndustriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/free-audit': {
-      id: '/free-audit'
-      path: '/free-audit'
-      fullPath: '/free-audit'
-      preLoaderRoute: typeof FreeAuditRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/case-studies': {
-      id: '/case-studies'
-      path: '/case-studies'
-      fullPath: '/case-studies'
-      preLoaderRoute: typeof CaseStudiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -301,13 +170,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/web-development': {
-      id: '/services/web-development'
-      path: '/web-development'
-      fullPath: '/services/web-development'
-      preLoaderRoute: typeof ServicesWebDevelopmentRouteImport
-      parentRoute: typeof ServicesRoute
-    }
     '/services/social-media': {
       id: '/services/social-media'
       path: '/social-media'
@@ -322,47 +184,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSeoRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/google-ads': {
-      id: '/services/google-ads'
-      path: '/google-ads'
-      fullPath: '/services/google-ads'
-      preLoaderRoute: typeof ServicesGoogleAdsRouteImport
+    '/services/ppc': {
+      id: '/services/ppc'
+      path: '/ppc'
+      fullPath: '/services/ppc'
+      preLoaderRoute: typeof ServicesPpcRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/branding': {
-      id: '/services/branding'
-      path: '/branding'
-      fullPath: '/services/branding'
-      preLoaderRoute: typeof ServicesBrandingRouteImport
+    '/services/content-marketing': {
+      id: '/services/content-marketing'
+      path: '/content-marketing'
+      fullPath: '/services/content-marketing'
+      preLoaderRoute: typeof ServicesContentMarketingRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/ai-search': {
-      id: '/services/ai-search'
-      path: '/ai-search'
-      fullPath: '/services/ai-search'
-      preLoaderRoute: typeof ServicesAiSearchRouteImport
+    '/services/app-development': {
+      id: '/services/app-development'
+      path: '/app-development'
+      fullPath: '/services/app-development'
+      preLoaderRoute: typeof ServicesAppDevelopmentRouteImport
       parentRoute: typeof ServicesRoute
     }
   }
 }
 
 interface ServicesRouteChildren {
-  ServicesAiSearchRoute: typeof ServicesAiSearchRoute
-  ServicesBrandingRoute: typeof ServicesBrandingRoute
-  ServicesGoogleAdsRoute: typeof ServicesGoogleAdsRoute
+  ServicesAppDevelopmentRoute: typeof ServicesAppDevelopmentRoute
+  ServicesContentMarketingRoute: typeof ServicesContentMarketingRoute
+  ServicesPpcRoute: typeof ServicesPpcRoute
   ServicesSeoRoute: typeof ServicesSeoRoute
   ServicesSocialMediaRoute: typeof ServicesSocialMediaRoute
-  ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
-  ServicesAiSearchRoute: ServicesAiSearchRoute,
-  ServicesBrandingRoute: ServicesBrandingRoute,
-  ServicesGoogleAdsRoute: ServicesGoogleAdsRoute,
+  ServicesAppDevelopmentRoute: ServicesAppDevelopmentRoute,
+  ServicesContentMarketingRoute: ServicesContentMarketingRoute,
+  ServicesPpcRoute: ServicesPpcRoute,
   ServicesSeoRoute: ServicesSeoRoute,
   ServicesSocialMediaRoute: ServicesSocialMediaRoute,
-  ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 
@@ -372,13 +232,7 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  BlogRoute: BlogRoute,
-  CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
-  FaqRoute: FaqRoute,
-  FreeAuditRoute: FreeAuditRoute,
-  IndustriesRoute: IndustriesRoute,
   ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
