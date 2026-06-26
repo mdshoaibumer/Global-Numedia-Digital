@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         {
           name: "description",
           content:
-            "We turn marketing into measurable revenue. Performance SEO, paid media, branding and growth systems for ambitious businesses.",
+            "Digital marketing agency offering SEO, PPC, social media marketing, web development, app development and business coaching.",
         },
         { name: "author", content: "Global Numedia" },
         { property: "og:site_name", content: "Global Numedia" },
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         {
           property: "og:description",
           content:
-            "Turn marketing into measurable revenue with a senior growth team.",
+            "Digital marketing, web development, SEO and business coaching for growing businesses.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -108,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         {
           property: "og:image:alt",
           content:
-            "Global Numedia — Digital Marketing & Growth Agency | ₹680 Cr+ Revenue Generated",
+            "Global Numedia — Digital Marketing & Growth Agency",
         },
         {
           property: "og:image:width",
@@ -133,7 +133,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         {
           name: "twitter:description",
           content:
-            "Turn marketing into measurable revenue with a senior growth team.",
+            "Digital marketing, web development, SEO and business coaching for growing businesses.",
         },
       ],
       links: [
@@ -162,15 +162,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             name: "Global Numedia Digital",
             alternateName: "Global Numedia",
             description:
-              "AI-native performance marketing agency. SEO, paid media, branding, and growth systems for ambitious businesses since 2013.",
+              "Digital marketing agency offering SEO, PPC, social media marketing, web development, app development and business coaching.",
             url: "https://globalnumedia.digital",
             logo: "https://globalnumedia.digital/logo.png",
-            foundingDate: "2013",
-            numberOfEmployees: {
-              "@type": "QuantitativeValue",
-              minValue: 50,
-              maxValue: 100,
-            },
             areaServed: ["India", "UAE", "Singapore", "Global"],
             contactPoint: {
               "@type": "ContactPoint",
@@ -183,12 +177,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "https://www.instagram.com/globalnumedia",
               "https://twitter.com/globalnumedia",
             ],
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "87",
-              bestRating: "5",
-            },
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "Digital Marketing Services",

@@ -57,8 +57,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-white/60">
-              A senior growth team turning marketing budgets into measurable
-              revenue for ambitious brands across the world.
+              Your digital growth partner — offering web development, SEO,
+              social media marketing, PPC, design and business coaching.
             </p>
             <div className="mt-6 space-y-3 text-sm text-white/70">
               <a

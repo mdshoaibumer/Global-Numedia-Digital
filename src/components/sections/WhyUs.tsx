@@ -7,31 +7,31 @@ export function WhyUs() {
   const items = [
     {
       icon: BarChart3,
-      title: "Data-driven decisions",
-      desc: "Every recommendation backed by attribution, cohort analysis and a single source of truth dashboard.",
-      stat: "100%",
-      statLabel: "attribution",
+      title: "Results-focused approach",
+      desc: "We track what matters — your growth. Every project has clear goals and measurable outcomes.",
+      stat: "Clear",
+      statLabel: "goals",
     },
     {
       icon: ShieldCheck,
-      title: "Transparent reporting",
-      desc: "Live Looker dashboards, weekly stand-ups, monthly QBRs. You see what we see, when we see it.",
-      stat: "Real-time",
-      statLabel: "dashboards",
+      title: "Transparent communication",
+      desc: "Regular updates, honest feedback and no surprises. You always know where your project stands.",
+      stat: "Always",
+      statLabel: "in the loop",
     },
     {
       icon: Star,
-      title: "Certified senior experts",
-      desc: "Google Premier, Meta Business, HubSpot Platinum, SEMrush, GA4 — all in-house, no offshore handoffs.",
-      stat: "8+ yrs",
-      statLabel: "avg. experience",
+      title: "Experienced team",
+      desc: "Skilled professionals across web development, design, marketing and coaching — dedicated to your success.",
+      stat: "Expert",
+      statLabel: "team",
     },
     {
       icon: Workflow,
-      title: "Proven growth systems",
-      desc: "Frameworks battle-tested across 240+ engagements and ₹680 Cr+ in client revenue since 2013.",
-      stat: "240+",
-      statLabel: "brands scaled",
+      title: "End-to-end solutions",
+      desc: "From strategy to execution — websites, marketing, design and coaching all under one roof.",
+      stat: "Full",
+      statLabel: "service",
     },
   ];
   return (
@@ -56,9 +56,9 @@ export function WhyUs() {
             <Crown className="h-3 w-3" /> Why Global Numedia
           </div>
           <h2 className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,6vw,4rem)] leading-[1.05] tracking-[-0.02em]">
-            We earn the renewal,{" "}
+            Why businesses choose{" "}
             <span className="bg-linear-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">
-              not the contract.
+              us.
             </span>
           </h2>
         </Reveal>

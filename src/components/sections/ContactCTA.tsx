@@ -7,26 +7,24 @@ import {
   Mail,
   MessageCircle,
   Phone,
-  Users2,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Reveal } from "@/components/ui/Reveal";
-import { client1, client2, client3 } from "./data";
-import { COMPANY, STATS } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
 
 export function ContactCTA() {
   const ctas = [
     {
       icon: Calendar,
-      label: "Free 30-min strategy call",
-      sub: "With a senior strategist · no pitch",
+      label: "Book a free consultation",
+      sub: "No obligation · Let's discuss your needs",
       href: "/contact",
       primary: true,
     },
     {
       icon: MessageCircle,
-      label: "WhatsApp our team",
-      sub: "Avg. reply in 12 minutes",
+      label: "WhatsApp us",
+      sub: "Quick replies during business hours",
       href: COMPANY.whatsapp,
     },
     {
@@ -78,36 +76,35 @@ export function ContactCTA() {
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                 </span>
                 <span className="text-[13px] font-medium text-white/80">
-                  Currently accepting 4 new clients for Q3
+                  Available for new projects
                 </span>
               </motion.div>
               <h2 className="mt-7 font-display text-[clamp(2.5rem,6vw,4rem)] leading-[1.05] tracking-[-0.02em]">
-                Let's build a growth engine your board will{" "}
+                Ready to grow your{" "}
                 <span className="bg-linear-to-r from-violet-400 to-indigo-300 bg-clip-text italic text-transparent">
-                  brag about.
+                  business?
                 </span>
               </h2>
               <p className="mt-6 max-w-xl text-[clamp(1rem,2vw,1.125rem)] leading-relaxed text-white/60">
-                Tell us about your business. We'll send you a candid 7-page
-                audit of your current marketing — what's working, what's broken,
-                and where the biggest revenue is hiding.
+                Tell us about your business and goals. We'll get back to you
+                with a clear plan on how we can help.
                 <span className="font-medium text-white/80">
                   {" "}
-                  Free, no obligation, replied within 48 hours.
+                  Free consultation, no obligation.
                 </span>
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/50">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  NDA-friendly
+                  Free consultation
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  Senior strategist only
+                  No obligation
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  No sales pitch
+                  Quick response
                 </div>
               </div>
             </div>
@@ -138,46 +135,6 @@ export function ContactCTA() {
                   <ArrowUpRight className="h-5 w-5 text-white/40 transition-all duration-300 group-hover:rotate-45 group-hover:text-white" />
                 </motion.a>
               ))}
-              <div className="mt-4 flex items-center gap-4 rounded-2xl border border-white/6 bg-white/2 p-5">
-                <div className="flex -space-x-2">
-                  <img
-                    src={client1}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]"
-                  />
-                  <img
-                    src={client2}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]"
-                  />
-                  <img
-                    src={client3}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-full object-cover ring-2 ring-[#030712]"
-                  />
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-[11px] font-medium text-white ring-2 ring-[#030712]">
-                    <Users2 className="h-3.5 w-3.5" />
-                  </div>
-                </div>
-                <div className="text-xs text-white/60">
-                  <span className="font-semibold text-white/90">
-                    {STATS.brandsServed} founders & CMOs
-                  </span>{" "}
-                  have run their growth audit with us.
-                </div>
-              </div>
             </div>
           </Reveal>
         </div>
@@ -210,7 +167,7 @@ export function MobileFixedCTA() {
             to="/contact"
             className="flex items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-violet-500 to-indigo-500 px-6 py-4 text-sm font-semibold text-white shadow-[0_12px_40px_-8px_rgba(120,119,198,0.5)] backdrop-blur-xl"
           >
-            Book a Free Growth Audit <ArrowUpRight className="h-4 w-4" />
+            Book a Free Consultation <ArrowUpRight className="h-4 w-4" />
           </Link>
         </motion.div>
       )}

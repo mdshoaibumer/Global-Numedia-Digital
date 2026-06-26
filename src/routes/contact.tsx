@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { COMPANY, STATS } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -172,9 +172,9 @@ function Contact() {
                   </div>
                   <div className="text-xs text-muted-foreground">
                     <span className="font-semibold text-foreground">
-                      {STATS.brandsServed} businesses
+                      Businesses like yours
                     </span>{" "}
-                    have run their free growth audit with us
+                    trust us with their digital growth
                   </div>
                 </div>
               </div>

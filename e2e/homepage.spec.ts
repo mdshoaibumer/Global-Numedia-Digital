@@ -10,7 +10,7 @@ test.describe("Homepage", () => {
   test("loads and shows hero heading", async ({ page }) => {
     const h1 = page.locator("h1");
     await expect(h1).toBeVisible({ timeout: 15000 });
-    await expect(h1).toContainText("growth partner");
+    await expect(h1).toContainText("grow");
   });
 
   test("header is visible and contains brand name", async ({ page }) => {
@@ -26,7 +26,7 @@ test.describe("Homepage", () => {
 
   test("hero CTA buttons are visible", async ({ page }) => {
     await expect(
-      page.getByRole("link", { name: /book free growth audit/i }),
+      page.getByRole("link", { name: /get in touch/i }),
     ).toBeVisible({ timeout: 15000 });
     await expect(
       page.getByRole("link", { name: /whatsapp/i }).first(),
