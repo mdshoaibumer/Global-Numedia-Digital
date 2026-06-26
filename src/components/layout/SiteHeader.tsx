@@ -33,7 +33,7 @@ export function SiteHeader() {
           className="flex items-center justify-between rounded-full border border-slate-200/60 bg-white/90 px-3 pl-5 py-2 shadow-sm backdrop-blur-xl transition-all duration-700"
         >
           <Link to="/" className="group flex items-center gap-2">
-            <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-8 w-auto rounded-md object-contain" />
+            <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-8 w-8 rounded-full object-cover mix-blend-multiply" />
             <span className="flex items-baseline gap-1.5">
               <span className="text-[15px] font-semibold tracking-tight text-slate-900 transition-colors duration-500">
                 Global Numedia
