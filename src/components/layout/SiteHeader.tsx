@@ -30,23 +30,15 @@ export function SiteHeader() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className={`flex items-center justify-between rounded-full px-3 pl-5 transition-all duration-700 ${
-            scrolled
-              ? "border border-border/50 bg-background/80 py-2 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12)] backdrop-blur-2xl backdrop-saturate-150 dark:border-white/8 dark:bg-[#030712]/70 dark:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]"
-              : "border border-transparent py-2"
-          }`}
+          className="flex items-center justify-between rounded-full border border-slate-200/60 bg-white/90 px-3 pl-5 py-2 shadow-sm backdrop-blur-xl transition-all duration-700"
         >
           <Link to="/" className="group flex items-center gap-2">
             <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-8 w-auto rounded-md object-contain" />
             <span className="flex items-baseline gap-1.5">
-              <span
-                className={`text-[15px] font-semibold tracking-tight transition-colors duration-500 ${scrolled ? "text-foreground dark:text-white" : "text-foreground"}`}
-              >
+              <span className="text-[15px] font-semibold tracking-tight text-slate-900 transition-colors duration-500">
                 Global Numedia
               </span>
-              <span
-                className={`text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500 ${scrolled ? "text-muted-foreground dark:text-white/50" : "text-muted-foreground"}`}
-              >
+              <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-slate-500 transition-colors duration-500">
                 Digital
               </span>
             </span>
@@ -61,7 +53,7 @@ export function SiteHeader() {
                 key={item.to}
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
-                className={`relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-300 ${scrolled ? "text-foreground/70 hover:text-foreground hover:bg-foreground/5 data-[status=active]:bg-foreground/8 data-[status=active]:text-foreground dark:text-white/70 dark:hover:text-white dark:hover:bg-white/6 dark:data-[status=active]:bg-white/8 dark:data-[status=active]:text-white" : "text-ink-soft hover:text-foreground hover:bg-foreground/5 data-[status=active]:bg-foreground/8 data-[status=active]:text-foreground"}`}
+                className="relative rounded-full px-3.5 py-1.5 text-sm font-medium text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-900 data-[status=active]:bg-slate-100 data-[status=active]:text-slate-900"
               >
                 {item.label}
               </Link>
@@ -69,10 +61,12 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <div className="[&>button]:!border-slate-200 [&>button]:!bg-white [&>button]:!text-slate-700 hover:[&>button]:!bg-slate-100">
+              <ThemeToggle />
+            </div>
             <Link
               to="/contact"
-              className={`hidden items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 sm:inline-flex ${scrolled ? "bg-foreground text-background hover:opacity-90 dark:bg-white dark:text-[#030712] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]" : "bg-foreground text-background hover:opacity-90"}`}
+              className="hidden items-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-slate-800 sm:inline-flex"
             >
               Get in touch
               <ArrowUpRight className="h-4 w-4" />
@@ -80,7 +74,7 @@ export function SiteHeader() {
             <button
               aria-label="Open menu"
               onClick={() => setOpen((o) => !o)}
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${scrolled ? "border-border text-foreground dark:border-white/10 dark:bg-white/5 dark:text-white" : "border-border bg-background text-foreground"}`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 md:hidden hover:bg-slate-50"
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -97,7 +91,7 @@ export function SiteHeader() {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="container-pro mt-3 md:hidden"
           >
-            <div className="rounded-3xl border border-border bg-background/95 p-4 shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15)] backdrop-blur-2xl dark:border-white/8 dark:bg-[#030712]/90 dark:shadow-[0_20px_60px_-12px_rgba(0,0,0,0.6)]">
+            <div className="rounded-3xl border border-slate-200/60 bg-white/95 p-4 shadow-xl backdrop-blur-2xl">
               <nav className="flex flex-col" aria-label="Mobile navigation">
                 {nav.map((item) => (
                   <Link
@@ -105,7 +99,7 @@ export function SiteHeader() {
                     to={item.to}
                     onClick={() => setOpen(false)}
                     activeOptions={{ exact: item.to === "/" }}
-                    className="rounded-2xl px-4 py-3 text-base font-medium text-foreground/70 hover:bg-foreground/5 hover:text-foreground data-[status=active]:bg-foreground/8 data-[status=active]:text-foreground dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white dark:data-[status=active]:bg-white/8 dark:data-[status=active]:text-white"
+                    className="rounded-2xl px-4 py-3 text-base font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 data-[status=active]:bg-slate-100 data-[status=active]:text-slate-900"
                   >
                     {item.label}
                   </Link>
@@ -113,7 +107,7 @@ export function SiteHeader() {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-foreground px-4 py-3 text-sm font-semibold text-background dark:bg-white dark:text-[#030712]"
+                  className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition-colors"
                 >
                   Get in touch <ArrowUpRight className="h-4 w-4" />
                 </Link>
