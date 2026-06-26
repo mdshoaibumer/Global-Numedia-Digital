@@ -5,6 +5,7 @@ import {
   Megaphone,
   Smartphone,
   FileText,
+  Blocks,
   ArrowUpRight,
 } from "lucide-react";
 import { PageHero, CTAStrip } from "@/components/layout/PageHero";
@@ -62,6 +63,12 @@ const services = [
     title: "Social Media Marketing",
     desc: "Build your brand and engage your audience on social.",
     to: "/services/social-media",
+  },
+  {
+    icon: Blocks,
+    title: "Blockchain Development",
+    desc: "Smart contracts, dApps and Web3 solutions for your business.",
+    to: "/services/blockchain",
   },
 ];
 

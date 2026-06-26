@@ -17,6 +17,7 @@ import { Route as ServicesSocialMediaRouteImport } from './routes/services.socia
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
 import { Route as ServicesPpcRouteImport } from './routes/services.ppc'
 import { Route as ServicesContentMarketingRouteImport } from './routes/services.content-marketing'
+import { Route as ServicesBlockchainRouteImport } from './routes/services.blockchain'
 import { Route as ServicesAppDevelopmentRouteImport } from './routes/services.app-development'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -60,6 +61,11 @@ const ServicesContentMarketingRoute =
     path: '/content-marketing',
     getParentRoute: () => ServicesRoute,
   } as any)
+const ServicesBlockchainRoute = ServicesBlockchainRouteImport.update({
+  id: '/blockchain',
+  path: '/blockchain',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesAppDevelopmentRoute = ServicesAppDevelopmentRouteImport.update({
   id: '/app-development',
   path: '/app-development',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/blockchain': typeof ServicesBlockchainRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/blockchain': typeof ServicesBlockchainRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/app-development': typeof ServicesAppDevelopmentRoute
+  '/services/blockchain': typeof ServicesBlockchainRoute
   '/services/content-marketing': typeof ServicesContentMarketingRoute
   '/services/ppc': typeof ServicesPpcRoute
   '/services/seo': typeof ServicesSeoRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/services/app-development'
+    | '/services/blockchain'
     | '/services/content-marketing'
     | '/services/ppc'
     | '/services/seo'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/services/app-development'
+    | '/services/blockchain'
     | '/services/content-marketing'
     | '/services/ppc'
     | '/services/seo'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/services'
     | '/services/app-development'
+    | '/services/blockchain'
     | '/services/content-marketing'
     | '/services/ppc'
     | '/services/seo'
@@ -198,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesContentMarketingRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/blockchain': {
+      id: '/services/blockchain'
+      path: '/blockchain'
+      fullPath: '/services/blockchain'
+      preLoaderRoute: typeof ServicesBlockchainRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/app-development': {
       id: '/services/app-development'
       path: '/app-development'
@@ -210,6 +229,7 @@ declare module '@tanstack/react-router' {
 
 interface ServicesRouteChildren {
   ServicesAppDevelopmentRoute: typeof ServicesAppDevelopmentRoute
+  ServicesBlockchainRoute: typeof ServicesBlockchainRoute
   ServicesContentMarketingRoute: typeof ServicesContentMarketingRoute
   ServicesPpcRoute: typeof ServicesPpcRoute
   ServicesSeoRoute: typeof ServicesSeoRoute
@@ -219,6 +239,7 @@ interface ServicesRouteChildren {
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAppDevelopmentRoute: ServicesAppDevelopmentRoute,
+  ServicesBlockchainRoute: ServicesBlockchainRoute,
   ServicesContentMarketingRoute: ServicesContentMarketingRoute,
   ServicesPpcRoute: ServicesPpcRoute,
   ServicesSeoRoute: ServicesSeoRoute,
