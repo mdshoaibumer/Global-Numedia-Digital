@@ -46,12 +46,7 @@ export function SiteFooter() {
         <div className="grid gap-14 py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl overflow-hidden">
-                <span className="absolute inset-0 bg-linear-to-br from-violet-500 to-indigo-500" />
-                <span className="relative font-display text-xl leading-none text-white">
-                  N
-                </span>
-              </span>
+              <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-9 w-auto rounded-md object-contain" />
               <span className="text-base font-semibold tracking-tight">
                 Global Numedia
               </span>

@@ -37,12 +37,7 @@ export function SiteHeader() {
           }`}
         >
           <Link to="/" className="group flex items-center gap-2">
-            <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-xl bg-foreground text-background overflow-hidden">
-              <span className="absolute inset-0 rounded-xl bg-linear-to-br from-accent to-violet-600 opacity-90" />
-              <span className="relative font-display text-lg leading-none text-white">
-                N
-              </span>
-            </span>
+            <img src="/logo.jpeg" alt="Global Numedia Logo" className="h-8 w-auto rounded-md object-contain" />
             <span className="flex items-baseline gap-1.5">
               <span
                 className={`text-[15px] font-semibold tracking-tight transition-colors duration-500 ${scrolled ? "text-foreground dark:text-white" : "text-foreground"}`}
